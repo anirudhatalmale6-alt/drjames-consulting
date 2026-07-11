@@ -1,0 +1,418 @@
+/* ==========================================================================
+   D. R. James Consulting, LLC — Home
+   Rebuilt 1:1 from the supplied design.
+   Design canvas: 1600 x 1020.  All desktop values are the measured originals.
+   ========================================================================== */
+
+/* --- Webfont -------------------------------------------------------------
+   The design was rendered in DejaVu Serif. It is self-hosted (subset, 15 KB)
+   so the page renders identically on Windows, macOS, iOS and Android instead
+   of falling back to Times / Georgia and drifting off the design.
+   ------------------------------------------------------------------------ */
+@font-face {
+  font-family: "DejaVu Serif";
+  src: url("../fonts/dejavu-serif-400.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "DejaVu Serif";
+  src: url("../fonts/dejavu-serif-700.woff2") format("woff2");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+
+:root {
+  --navy-bar:  #001b31;   /* top navigation                */
+  --navy-foot: #04253f;   /* footer                        */
+  --navy-ink:  #051a2f;   /* body / headline text          */
+  --cream-hi:  #faf8f4;   /* brand bar + light text        */
+  --cream-lo:  #f8f6f1;   /* hero                          */
+  --gold:      #c2841e;   /* rules, gems, badge border     */
+  --gold-lt:   #daa13f;   /* active nav, name, copyright   */
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--cream-lo);
+  color: var(--navy-ink);
+  font-family: "DejaVu Serif", Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+.skip {
+  position: absolute; left: -9999px; top: 0; z-index: 99;
+  background: var(--gold); color: #fff; padding: 10px 18px;
+}
+.skip:focus { left: 0; }
+
+/* ==========================================================================
+   1. TOP NAVIGATION            design: y 0–68, bg #001b31
+   ========================================================================== */
+.topbar { background: var(--navy-bar); }
+
+.topbar__nav {
+  height: 68px;
+  display: flex;
+  align-items: center;
+  padding: 0 34px;
+}
+
+.navmenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 36.5px;
+}
+
+.navmenu a {
+  display: block;
+  position: relative;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--cream-hi);
+  text-decoration: none;
+  padding-top: 8px;
+  padding-bottom: 12px;   /* puts the active rule on y=51 */
+  white-space: nowrap;
+}
+.navmenu a:hover,
+.navmenu a:focus-visible { color: var(--gold-lt); }
+
+.navmenu a.is-active { color: var(--gold-lt); }
+.navmenu a.is-active::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 3px;
+  background: var(--gold-lt);
+}
+
+/* burger — desktop hides it */
+.navtoggle {
+  display: none;
+  width: 44px; height: 44px;
+  margin-left: auto;
+  padding: 10px 8px;
+  background: none; border: 0; cursor: pointer;
+}
+.navtoggle span {
+  display: block; height: 2px; margin: 5px 0;
+  background: var(--cream-hi);
+}
+
+/* ==========================================================================
+   2. BRAND BAR                 design: y 68–258 (190px), bg #faf8f4
+   ========================================================================== */
+.brandbar { background: var(--cream-hi); }
+
+.brandbar__in {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 40px 160px 0 118px;   /* emblem top = y108 */
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-height: 190px;
+}
+
+/* --- logo lockup --- */
+.brand { display: flex; align-items: flex-start; }
+
+.brand__mark {
+  width: 95px; height: 78px;
+  flex: 0 0 95px;
+}
+
+.brand__text {
+  display: block;
+  margin-left: 42px;             /* emblem right (213) -> text (254) */
+  padding-top: 2px;
+}
+
+.brand__name {
+  display: block;
+  font-size: 48px;
+  line-height: 53px;             /* cap-top y117 -> y168 */
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.brand__sub {
+  display: block;
+  font-size: 31px;
+  line-height: 36px;
+}
+
+/* --- right-hand tagline --- */
+.tagline {
+  width: 431px;                  /* rule x1010–1440 */
+  flex: 0 0 431px;
+  padding-top: 7px;
+}
+
+.tagline__text {
+  width: 390px;
+  margin: 0 0 0 auto;            /* text block sits flush right */
+  text-align: center;
+  font-size: 17px;
+  line-height: 30px;
+}
+
+/* ==========================================================================
+   3. GOLD RULE + GEM  (shared)
+   ========================================================================== */
+.rule {
+  position: relative;
+  height: 2px;
+  background: var(--gold);
+}
+.rule__gem {
+  position: absolute;
+  top: 50%; left: 50%;
+  background: var(--gold);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.rule--tagline { width: 431px; margin-top: 10px; }
+.rule--tagline .rule__gem { width: 16px; height: 16px; }
+
+.rule--hero { width: 631px; margin: 22px auto 0; }
+.rule--hero .rule__gem { width: 21px; height: 21px; }
+
+/* ==========================================================================
+   4. HERO                      design: y 258–775, bg #f8f6f1
+   ========================================================================== */
+.hero { background: var(--cream-lo); }
+
+.hero__in {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 81px 24px 62px;        /* headline cap-top = y352 */
+  text-align: center;
+}
+
+.hero__title {
+  margin: 0;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 72px;              /* line 1 y352 -> line 2 y424 */
+  color: var(--navy-ink);
+}
+
+.hero__lede {
+  margin: 41px 0 0;               /* rule -> first lede line (y556) */
+  font-size: 22px;
+  line-height: 34px;
+  letter-spacing: 0.06px;
+}
+
+.hero__serve {
+  margin: 39px 0 0;               /* -> y695 */
+  font-size: 17px;
+  line-height: 24px;
+  letter-spacing: 0.085px;
+}
+
+/* ==========================================================================
+   5. FOOTER                    design: y 775–1020 (245px), bg #04253f
+   --------------------------------------------------------------------------
+   The supplied design overlaps the certification badge across the credential
+   column and the contact row, so on desktop the blocks are placed on the
+   measured grid. Below 1100px they fall back to a normal stacked flow.
+   ========================================================================== */
+.foot {
+  background: var(--navy-foot);
+  color: var(--cream-hi);
+}
+
+.foot__in {
+  position: relative;
+  max-width: 1600px;
+  height: 245px;
+  margin: 0 auto;
+}
+
+.foot p { margin: 0; }   /* element defaults — per-block spacing is set below */
+
+/* left credential column */
+.foot__person { position: absolute; left: 86px; top: 43px; }
+
+.foot__name {
+  font-size: 30.4px;
+  font-weight: 700;
+  line-height: 34px;
+  letter-spacing: 0.15px;
+  color: var(--gold-lt);
+}
+
+
+.foot__creds {
+  font-size: 17px;
+  line-height: 29px;
+  color: var(--cream-hi);
+}
+.foot .foot__creds { margin-top: 7px; }   /* beats `.foot p` specificity */
+
+/* right service line */
+.foot__services {
+  position: absolute;
+  left: 520px; top: 56px;
+  font-size: 27.5px;
+  letter-spacing: -0.15px;
+  font-weight: 700;
+  line-height: 32px;
+  white-space: nowrap;
+}
+.foot__services span { white-space: nowrap; }
+
+/* Intuit / QuickBooks badge (supplied as artwork — sits over the contact row,
+   exactly as in the design) */
+.qb {
+  position: absolute;
+  left: 430px; top: 112px;
+  z-index: 1;
+  width: 136px; height: 71px;
+}
+
+/* contact strip */
+.foot__contact {
+  position: absolute;
+  left: 568px; top: 149px;
+  display: flex;
+  gap: 27.5px;
+  font-size: 16px;
+  line-height: 22px;
+}
+.foot__contact a,
+.foot__contact span { color: var(--cream-hi); text-decoration: none; }
+.foot__contact a:hover,
+.foot__contact a:focus-visible { color: var(--gold-lt); text-decoration: underline; }
+
+/* copyright */
+.foot__copy {
+  position: absolute;
+  left: 567px; top: 199px;
+  font-size: 14px;
+  letter-spacing: 0.12px;
+  line-height: 18px;
+  color: var(--gold-lt);
+}
+
+/* ==========================================================================
+   6. RESPONSIVE
+   ========================================================================== */
+
+/* --- laptop: keep the composition, tighten the gutters ------------------- */
+@media (max-width: 1599px) {
+  .brandbar__in { padding-right: 60px; padding-left: 60px; }
+  .foot__in     { padding: 0 40px; }
+  .foot__person { left: 40px; }
+}
+
+@media (max-width: 1500px) {
+  .brand__name { font-size: 42px; line-height: 46px; }
+  .brand__sub  { font-size: 27px; }
+  .tagline, .rule--tagline { width: 380px; flex-basis: 380px; }
+  .tagline__text { width: 100%; }
+  .navmenu { gap: 26px; }
+}
+
+/* --- footer: stop absolute-positioning, stack it ------------------------- */
+@media (max-width: 1360px) {
+  .foot__in {
+    position: static;
+    height: auto;
+    padding: 44px 40px 34px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "person services"
+      "person contact"
+      "badge  contact"
+      "copy   copy";
+    column-gap: 48px;
+    row-gap: 22px;
+    align-items: start;
+  }
+  .foot__person   { position: static; grid-area: person; }
+  .foot__services { position: static; grid-area: services; white-space: normal; font-size: 26px; }
+  .qb             { position: static; grid-area: badge; }
+  .foot__contact  { position: static; grid-area: contact; flex-wrap: wrap; row-gap: 8px; }
+  .foot__copy     { position: static; grid-area: copy; text-align: center; margin-top: 10px; }
+}
+
+/* --- tablet -------------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .brandbar__in {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 34px 24px 30px;
+    min-height: 0;
+  }
+  .brand { flex-direction: column; align-items: center; }
+  .brand__mark { margin-bottom: 14px; }
+  .brand__text { margin-left: 0; }
+  .brand__name { font-size: 38px; line-height: 44px; white-space: normal; }
+  .brand__sub  { font-size: 24px; }
+
+  .tagline { margin-top: 26px; width: 100%; flex-basis: auto; padding-top: 0; }
+  .tagline__text { width: 100%; }
+  .rule--tagline { width: 100%; max-width: 431px; margin-left: auto; margin-right: auto; }
+
+  .hero__in    { padding: 60px 24px 70px; }
+  .hero__title { font-size: 44px; line-height: 58px; }
+  .hero__lede  { font-size: 20px; line-height: 31px; }
+  .rule--hero  { width: min(631px, 90%); }
+}
+
+/* --- mobile -------------------------------------------------------------- */
+@media (max-width: 860px) {
+  .topbar__nav { padding: 0 18px; position: relative; flex-wrap: wrap; }
+  .navtoggle   { display: block; }
+
+  .navmenu {
+    display: none;
+    order: 2;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 6px 0 14px;
+  }
+  .navmenu.is-open { display: flex; }
+  .navmenu a { padding: 11px 0; font-size: 17px; }
+  .navmenu a.is-active::after { right: auto; width: 48px; bottom: 6px; }
+
+  .brand__name { font-size: 28px; line-height: 34px; }
+  .brand__sub  { font-size: 19px; }
+  .tagline__text { font-size: 16px; line-height: 26px; }
+
+  .hero__in    { padding: 44px 20px 52px; }
+  .hero__title { font-size: 31px; line-height: 41px; }
+  .hero__lede  { font-size: 17px; line-height: 28px; margin-top: 26px; }
+  .hero__lede br { display: none; }
+  .hero__serve { font-size: 15px; line-height: 24px; margin-top: 30px; }
+  .rule--hero  { margin-top: 22px; }
+  .rule--hero .rule__gem { width: 17px; height: 17px; }
+
+  .foot__in {
+    display: block;
+    padding: 34px 20px 26px;
+    text-align: center;
+  }
+  .foot__name     { font-size: 24px; }
+  .foot__creds    { font-size: 15px; line-height: 26px; }
+  .foot__services { font-size: 19px; line-height: 30px; margin-top: 24px; }
+  .qb             { margin: 24px auto 0; }
+  .foot__contact  { justify-content: center; margin-top: 22px; font-size: 15px; gap: 6px 22px; }
+  .foot__copy     { margin-top: 24px; font-size: 13px; }
+}
