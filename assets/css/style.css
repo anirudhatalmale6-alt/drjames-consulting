@@ -132,7 +132,7 @@ img { display: block; max-width: 100%; height: auto; }
 .brandbar__in {
   max-width: 100rem;                       /* 1600 */
   margin: 0 auto;
-  padding: 2.5rem 10rem 0 7.375rem;        /* 40 / 160 / 0 / 118 */
+  padding: 2.5rem 10rem 0 6.875rem;        /* 40 / 160 / 0 / 110 */
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -143,14 +143,15 @@ img { display: block; max-width: 100%; height: auto; }
 .brand { display: flex; align-items: flex-start; }
 
 .brand__mark {
-  width: 5.9375rem;              /* 95 */
-  height: 4.875rem;              /* 78 */
-  flex: 0 0 5.9375rem;
+  width: 8.4375rem;              /* 135 — design x110–244 */
+  height: 6.4375rem;             /* 103 — design y90–192  */
+  flex: 0 0 8.4375rem;
+  margin-top: -1.125rem;         /* lifts it from the text top (108) to y90 */
 }
 
 .brand__text {
   display: block;
-  margin-left: 2.625rem;         /* emblem right (213) -> text (254) */
+  margin-left: 0.75rem;          /* emblem right (245) -> text (257) */
   padding-top: 0.125rem;
 }
 
@@ -212,10 +213,21 @@ img { display: block; max-width: 100%; height: auto; }
 .hero { background: var(--cream-lo); }
 
 .hero__in {
+  position: relative;
   max-width: 100rem;
   margin: 0 auto;
   padding: 5.0625rem 1.5rem 3.875rem;   /* 81 / 24 / 62 — headline cap-top = y352 */
   text-align: center;
+}
+
+/* Intuit / QuickBooks badge — supplied as artwork, placed exactly where the
+   design puts it: floating at the left of the hero, beside the headline. */
+.qb {
+  position: absolute;
+  left: 9.6875rem;               /* 155 */
+  top: 5.75rem;                  /* 350 — hero starts at y258 */
+  width: 7.4375rem;              /* 119 */
+  height: 4.1875rem;             /* 67  */
 }
 
 .hero__title {
@@ -243,9 +255,8 @@ img { display: block; max-width: 100%; height: auto; }
 /* ==========================================================================
    5. FOOTER                    design: y 775–1020 (245px), bg #04253f
    --------------------------------------------------------------------------
-   The supplied design overlaps the certification badge across the credential
-   column and the contact row, so on desktop the blocks sit on the measured
-   grid. Below 1100px they fall back to a normal stacked flow.
+   Blocks sit on the measured grid on desktop; below 1100px they fall back to
+   a normal stacked flow.
    ========================================================================== */
 .foot {
   background: var(--navy-foot);
@@ -278,10 +289,10 @@ img { display: block; max-width: 100%; height: auto; }
 
 .foot__creds {
   font-size: 1.0625rem;          /* 17 */
-  line-height: 1.8125rem;        /* 29 */
+  line-height: 1.9375rem;        /* 31 — line tops y866 / 897 / 928 / 959 */
   color: var(--cream-hi);
 }
-.foot .foot__creds { margin-top: 0.4375rem; }   /* beats `.foot p` specificity */
+.foot .foot__creds { margin-top: 0.375rem; }   /* beats `.foot p` specificity */
 
 /* right service line */
 .foot__services {
@@ -296,24 +307,13 @@ img { display: block; max-width: 100%; height: auto; }
 }
 .foot__services span { white-space: nowrap; }
 
-/* Intuit / QuickBooks badge (supplied as artwork — sits over the contact row,
-   exactly as in the design) */
-.qb {
-  position: absolute;
-  left: 26.875rem;               /* 430 */
-  top: 7rem;                     /* 112 */
-  z-index: 1;
-  width: 8.5rem;                 /* 136 */
-  height: 4.4375rem;             /* 71  */
-}
-
 /* contact strip */
 .foot__contact {
   position: absolute;
-  left: 35.5rem;                 /* 568 */
+  left: 40.125rem;               /* 642 */
   top: 9.3125rem;                /* 149 */
   display: flex;
-  gap: 1.71875rem;               /* 27.5 */
+  gap: 1.7708rem;                /* 28.3 -> line ends on x1406 */
   font-size: 1rem;               /* 16 */
   line-height: 1.375rem;         /* 22 */
 }
@@ -353,7 +353,7 @@ img { display: block; max-width: 100%; height: auto; }
     min-height: 0;
   }
   .brand { flex-direction: column; align-items: center; }
-  .brand__mark { width: 95px; height: 78px; flex-basis: auto; margin-bottom: 14px; }
+  .brand__mark { width: 135px; height: 103px; flex-basis: auto; margin: 0 0 10px; }
   .brand__text { margin-left: 0; }
   .brand__name { font-size: 38px; line-height: 44px; white-space: normal; }
   .brand__sub  { font-size: 24px; line-height: 30px; }
@@ -362,6 +362,9 @@ img { display: block; max-width: 100%; height: auto; }
   .tagline__text { width: 100%; font-size: 17px; line-height: 28px; white-space: normal; }
   .rule--tagline { width: min(431px, 100%); margin: 12px auto 0; height: 2px; }
   .rule--tagline .rule__gem { width: 16px; height: 16px; }
+
+  /* badge leaves its float and sits above the headline */
+  .qb          { position: static; width: 119px; height: 67px; margin: 0 auto 30px; }
 
   .hero__in    { padding: 60px 24px 70px; }
   .hero__title { font-size: 44px; line-height: 58px; }
@@ -381,7 +384,6 @@ img { display: block; max-width: 100%; height: auto; }
     grid-template-areas:
       "person services"
       "person contact"
-      "badge  contact"
       "copy   copy";
     column-gap: 48px;
     row-gap: 22px;
@@ -389,9 +391,8 @@ img { display: block; max-width: 100%; height: auto; }
   }
   .foot__person   { position: static; grid-area: person; }
   .foot__name     { font-size: 30px; line-height: 34px; }
-  .foot__creds    { font-size: 17px; line-height: 29px; }
+  .foot__creds    { font-size: 17px; line-height: 31px; }
   .foot__services { position: static; grid-area: services; white-space: normal; font-size: 26px; line-height: 32px; }
-  .qb             { position: static; grid-area: badge; width: 136px; height: 71px; }
   .foot__contact  { position: static; grid-area: contact; flex-wrap: wrap; gap: 8px 24px; font-size: 16px; }
   .foot__copy     { position: static; grid-area: copy; text-align: center; margin-top: 10px; font-size: 14px; }
 }
@@ -416,10 +417,12 @@ img { display: block; max-width: 100%; height: auto; }
   .navmenu a { padding: 11px 0; font-size: 17px; line-height: 22px; }
   .navmenu a.is-active::after { right: auto; width: 48px; bottom: 6px; height: 3px; }
 
+  .brand__mark { width: 118px; height: 90px; }
   .brand__name { font-size: 28px; line-height: 34px; }
   .brand__sub  { font-size: 19px; line-height: 26px; }
   .tagline__text { font-size: 16px; line-height: 26px; }
 
+  .qb          { margin-bottom: 26px; }
   .hero__in    { padding: 44px 20px 52px; }
   .hero__title { font-size: 31px; line-height: 41px; }
   .hero__lede  { font-size: 17px; line-height: 28px; margin-top: 26px; }
@@ -434,9 +437,8 @@ img { display: block; max-width: 100%; height: auto; }
     text-align: center;
   }
   .foot__name     { font-size: 24px; }
-  .foot__creds    { font-size: 15px; line-height: 26px; }
+  .foot__creds    { font-size: 15px; line-height: 28px; }
   .foot__services { font-size: 19px; line-height: 30px; margin-top: 24px; }
-  .qb             { margin: 24px auto 0; }
   .foot__contact  { justify-content: center; margin-top: 22px; font-size: 15px; gap: 6px 22px; }
   .foot__copy     { margin-top: 24px; font-size: 13px; }
 }
