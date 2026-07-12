@@ -442,3 +442,254 @@ img { display: block; max-width: 100%; height: auto; }
   .foot__contact  { justify-content: center; margin-top: 22px; font-size: 15px; gap: 6px 22px; }
   .foot__copy     { margin-top: 24px; font-size: 13px; }
 }
+
+
+/* ==========================================================================
+   SERVICES PAGE                design canvas: 1525 x 1031
+   --------------------------------------------------------------------------
+   The two supplied designs are NOT drawn to the same spec:
+
+     * Home is set in DejaVu Serif; Services is set in DejaVu Serif CONDENSED.
+     * The Services nav is ~25% larger (20px vs 16px) and sits at x48, not x34.
+     * The Services header is a different lockup entirely (rules + diamond +
+       corner graphic) where Home is emblem-left / tagline-right.
+
+   Both are reproduced exactly as supplied. Every value below is measured off
+   the Services design, in rem where 1.04918rem = 16px at its 1525px width.
+   ========================================================================== */
+
+@font-face {
+  font-family: "DejaVu Serif Condensed";
+  src: url("../fonts/dejavu-serif-cond-400.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "DejaVu Serif Condensed";
+  src: url("../fonts/dejavu-serif-cond-700.woff2") format("woff2");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+
+.p-services { font-family: "DejaVu Serif Condensed", "DejaVu Serif", Georgia, serif; }
+
+/* The footer is a site-wide component and is drawn in the Home design's face.
+   Keep it on DejaVu Serif so it stays identical on every page. */
+.p-services .foot { font-family: "DejaVu Serif", Georgia, "Times New Roman", serif; }
+
+@media (min-width: 1100px) and (max-width: 1524.98px) {
+  html.svc { font-size: 1.04918vw; }        /* 16px at the 1525 design width */
+}
+@media (min-width: 1525px) {
+  html.svc { font-size: 16px; }
+}
+
+/* ---- nav ---------------------------------------------------------------- */
+@media (min-width: 1100px) {
+  .p-services .topbar { height: 4.45902rem; }               /* 68 on this design's scale */
+  .p-services .topbar__nav { height: 4.45902rem; padding: 0 3.14754rem; }  /* ink starts x48 */
+  .p-services .navmenu { gap: 2.72131rem; }            /* 41.5 -> line ends x1261 */
+  .p-services .navmenu a { font-size: 1.31148rem; line-height: 1.63934rem; }  /* 20 */
+}
+
+/* ---- brand bar ---------------------------------------------------------- */
+.svcbar {
+  position: relative;
+  height: 15.2787rem;                    /* 233  (y68 -> y301) */
+  background: var(--cream-lo);
+  overflow: hidden;
+}
+.svcbar__corner {
+  position: absolute;
+  right: 0; top: 0;
+  width: 35.7377rem;                     /* 545 */
+  height: 15.2787rem;
+  display: block;
+}
+.svcbar__in {
+  position: relative;
+  max-width: 100rem;                 /* 1525 */
+  margin: 0 auto;
+  height: 100%;
+}
+.svcbar__mark {
+  position: absolute;
+  left: 5.83607rem;                       /* 89 */
+  top: 3.08197rem;                        /* 115 */
+  width: 6.22951rem;                      /* 95 */
+  height: 5.96721rem;                     /* 91 */
+}
+.svcbar__lockup {
+  position: absolute;
+  left: 13.1148rem;                         /* 200 */
+  top: 0;
+  width: 45.1803rem;                     /* 689  (x200 -> x889) */
+}
+.rule--svc-top { margin-top: 3.21311rem; margin-left: 0.06557rem; }  /* rule on y117 */
+.rule--svc-bot { margin-top: 0.98361rem; }                          /* rule on y258 */
+.rule--svc-bot .rule__gem { width: 0.91803rem; height: 0.91803rem; }   /* 14 */
+
+.svcbar__name {
+  margin: 0;
+  padding: 0.98361rem 0 0 0.13115rem;       /* cap-top lands on y142, ink starts x205 */
+  font-size: 3.54098rem;                   /* 54 */
+  line-height: 1.15;
+  color: var(--navy-ink);
+  white-space: nowrap;
+  width: max-content;              /* nowrap must never be clipped by the lockup box */
+}
+.svcbar__llc {
+  font-size: 2.95082rem;                  /* 45 - the design draws LLC smaller */
+  margin-left: 1.37705rem;                /* 21 */
+}
+.svcbar__sub {
+  margin: 0;
+  padding-top: 0.39344rem;                 /* cap-top lands on y209 */
+  padding-right: 5.37705rem;               /* 82 - the design centres it on x503, not on the rule */
+  font-size: 2.22951rem;                   /* 34 */
+  line-height: 1.25;
+  color: var(--navy-ink);
+  text-align: center;
+}
+
+/* ---- "What We Do" band -------------------------------------------------- */
+.svcband {
+  height: 6.7541rem;                     /* 103  (y301 -> y404) */
+  background: var(--navy-foot);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.svcband__title {
+  margin: 0;
+  padding-top: 1.37705rem;                /* cap-top lands on y328 */
+  font-size: 3.34426rem;                  /* 51 */
+  font-weight: 700;
+  line-height: 1;
+  color: #dc9418;
+}
+.svcband__under {
+  width: 47.4754rem;                       /* 724  (x398 -> x1121) */
+  height: 0.13115rem;
+  margin-top: 0.65574rem;                  /* lands on y383 */
+  background: var(--gold);
+}
+
+/* ---- service cards ------------------------------------------------------ */
+.cards {
+  background: var(--cream-lo);
+  padding: 4.45902rem 0 4.98361rem;            /* row 1 tops out on y472 */
+}
+.cards__row {
+  display: flex;
+  align-items: stretch;
+  gap: 1.44262rem;                         /* 22 */
+  margin: 0 auto;
+}
+.cards__row--4 { max-width: 90.8197rem; }                          /* 1385 */
+.cards__row--3 { max-width: 70.3607rem; margin-top: 1.70492rem; }    /* 1073 / 26 */
+.cards__row > .card { flex: 1 1 0; }
+.cards__row--4 > .card { min-height: 15.3443rem; }                  /* 234 */
+.cards__row--3 > .card { min-height: 14.6885rem; }                      /* 224 */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 0.13115rem solid var(--gold);    /* 2 */
+  border-radius: 0.78689rem;                /* 12 */
+  padding: 1.11475rem 1.5082rem 1.57377rem;   /* 17 / 23 / 24 */
+  background: transparent;               /* the cards are the same cream as the page */
+}
+.card__head { display: flex; align-items: center; gap: 1.5082rem; }  /* 23 */
+.card__dot {
+  position: relative;
+  flex: 0 0 3.08197rem;                   /* 47 */
+  width: 3.08197rem;
+  height: 3.21311rem;                     /* 49 */
+  border-radius: 50%;
+  background: var(--navy-foot);
+}
+.card__dot::after {
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 0.52459rem; height: 0.52459rem;
+  margin: -0.2623rem 0 0 -0.2623rem;
+  border-radius: 50%;
+  background: var(--gold-lt);
+}
+.card__title {
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--navy-ink);
+  white-space: nowrap;
+}
+/* The supplied artwork auto-shrinks a title that will not fit beside the disc.
+   A 22px "QuickBooks Maintenance" cannot fit a 343px card, so the design draws
+   the long row-2 titles smaller. Reproduced exactly. */
+.cards__row--4 .card__title { font-size: 1.44262rem; }                    /* 22   */
+.cards__row--3 .card__title { font-size: 1.40984rem; }                  /* 21.5 */
+.cards__row--3 .card:nth-child(2) .card__title,
+.cards__row--3 .card:nth-child(3) .card__title { font-size: 1.2459rem; }  /* 19   */
+
+/* row 2 is drawn with a tighter gutter so the long titles clear the border */
+.cards__row--3 .card { padding: 1.18033rem 0.32787rem 1.57377rem 1.18033rem; }
+.cards__row--3 .card__head { gap: 1.37705rem; }
+.card__body {
+  margin: 0.45902rem 0 0;                 /* first line lands on y557 */
+  max-width: 17.8361rem;                      /* 272 - reproduces the design's exact line breaks
+                                            in all 7 cards; the copy column is narrower than
+                                            the card's content box in the supplied artwork */
+  font-size: 1.18033rem;                   /* 18 */
+  line-height: 2.16393rem;                /* 33 */
+  color: var(--navy-ink);
+}
+
+/* ---- below 1100px: stack ------------------------------------------------ */
+@media (max-width: 1099.98px) {
+  .svcbar { height: auto; padding: 26px 0 30px; }
+  .svcbar__corner { display: none; }
+  .svcbar__in { display: flex; flex-direction: column; align-items: center; }
+  .svcbar__mark { position: static; width: 95px; height: 91px; margin-bottom: 12px; }
+  .svcbar__lockup { position: static; width: 100%; max-width: 640px; padding: 0 20px; }
+  .rule--svc-top { margin: 0; }
+  .rule--svc-bot { margin-top: 14px; }
+  .svcbar__name {
+    padding-top: 12px; font-size: 32px; line-height: 1.25;
+    text-align: center; white-space: normal;
+  }
+  .svcbar__llc { font-size: 24px; margin-left: 8px; }
+  .svcbar__sub { padding: 6px 0 0; font-size: 21px; }
+
+  .svcband { height: auto; padding: 22px 20px 26px; }
+  .svcband__title { padding-top: 0; font-size: 34px; }
+  .svcband__under { width: min(70%, 420px); margin-top: 12px; }
+
+  .cards { padding: 34px 20px 40px; }
+  .cards__row { flex-wrap: wrap; gap: 18px; max-width: 720px; }
+  .cards__row--3 { max-width: 720px; margin-top: 18px; }
+  .cards__row > .card { flex: 1 1 300px; min-height: 0; }
+  .cards__row--4 > .card, .cards__row--3 > .card { min-height: 0; }
+  .card, .cards__row--3 .card { border-radius: 12px; padding: 18px 22px 22px; }
+  .card__head, .cards__row--3 .card__head { gap: 16px; }
+  .card__dot { flex-basis: 42px; width: 42px; height: 42px; }
+  /* the desktop rules set nowrap + per-card sizes; both must be undone here or
+     a long title overflows a narrow card */
+  .card__title,
+  .cards__row--4 .card__title,
+  .cards__row--3 .card__title,
+  .cards__row--3 .card:nth-child(2) .card__title,
+  .cards__row--3 .card:nth-child(3) .card__title { font-size: 21px; white-space: normal; }
+  .card__body { margin-top: 12px; max-width: none; font-size: 17px; line-height: 27px; }
+}
+@media (max-width: 620px) {
+  .cards__row > .card { flex: 1 1 100%; }
+  .card__title,
+  .cards__row--4 .card__title,
+  .cards__row--3 .card__title,
+  .cards__row--3 .card:nth-child(2) .card__title,
+  .cards__row--3 .card:nth-child(3) .card__title { font-size: 19px; }
+  .svcband__title { font-size: 28px; }
+  .svcbar__name { font-size: 26px; }
+  .svcbar__llc { font-size: 20px; }
+  .svcbar__sub { font-size: 18px; }
+}
