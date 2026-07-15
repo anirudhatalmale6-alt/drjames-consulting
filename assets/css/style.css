@@ -693,3 +693,233 @@ img { display: block; max-width: 100%; height: auto; }
   .svcbar__llc { font-size: 20px; }
   .svcbar__sub { font-size: 18px; }
 }
+
+/* ==========================================================================
+   HOME PAGE  —  "ACT Home Page" design (final, 2026-07-15)
+   Design canvas 1536 x 1024. Every value below is the measured original px
+   divided by 15.36 (= px * 1600/1536 / 16), so the page sits on the SAME rem
+   scale as the rest of the site (1rem = 16px at the shared 1600 canvas) and
+   the footer renders identically across pages.
+   ========================================================================== */
+.p-home { background: var(--cream-hi); }
+
+/* ---- Header (rules + diamond lockup, centred, on cream) ---- */
+.p-home .hdr { background: var(--cream-hi); padding-top: 1.5625rem; }   /* rule top y24 */
+
+.p-home .hdr { position: relative; }
+.p-home .hdr__lockup { position: relative; }
+.p-home .hdr__emblem {
+  position: absolute;
+  left: 27.7rem;                  /* design gold mark x432 */
+  top: 2.7rem;                    /* y43 */
+  width: 5.25rem;                 /* ~80px */
+  height: auto;
+}
+.p-home .hdr__titles {
+  width: 42.32rem;                /* rules 650px wide */
+  margin: 0 auto;
+  transform: translateX(4.6875rem);   /* centre the title block on design x840 */
+  text-align: center;
+}
+
+.p-home .rule { display: block; position: relative; height: 0.13rem; background: var(--gold); width: 100%; }
+.p-home .rule--bot { margin-top: 1.15rem; }
+.p-home .gem {
+  position: absolute; top: 50%; left: 50%;
+  width: 0.85rem; height: 0.85rem; background: var(--gold);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.p-home .hdr__name {
+  margin: 1.25rem 0 0;
+  font-weight: 400;
+  font-size: 2.705rem;            /* width-fit to 597px */
+  line-height: 0.9;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  color: var(--navy-ink);
+}
+.p-home .hdr__sub {
+  margin: 0.28rem 0 0;
+  font-size: 1.619rem;            /* width-fit 554 */
+  color: var(--navy-ink);
+}
+
+/* ---- Nav (cream, navy links, centred) ---- */
+.p-home .hdr__nav {
+  display: flex;
+  justify-content: center;
+  padding: 2.45rem 1.5rem 0.5rem;   /* nav ink lands ~y183-201 */
+}
+.p-home .navmenu { gap: 2.15rem; flex-wrap: nowrap; }
+.p-home .navmenu a {
+  font-size: 1.235rem;            /* ~19 */
+  line-height: 1.4rem;
+  color: var(--navy-ink);
+  padding: 0 0 0.25rem;
+}
+.p-home .navmenu a:hover,
+.p-home .navmenu a:focus-visible { color: var(--gold); }
+.p-home .navmenu a.is-active { color: var(--navy-ink); }
+.p-home .navmenu a.is-active::after { height: 0.13rem; background: var(--navy-ink); bottom: 0; }
+
+/* ---- Hero (photo background with baked cream panel; live text on top) ---- */
+.p-home .hero {
+  position: relative;
+  width: 100%;
+  height: 31.77rem;                              /* photo ends ~y694 */
+  background: url("../img/hero.jpg") top center / 100% 100% no-repeat;
+}
+.p-home .hero__panel {
+  position: absolute;
+  left: 21.55rem;                                /* x331 */
+  top: 3.27rem;                                  /* headline cap-top y264 (hero top y206) */
+  width: 34rem;
+}
+.p-home .hero__title {
+  margin: 0;
+  max-width: 34rem;
+  font-family: "DejaVu Serif Condensed", "DejaVu Serif", Georgia, serif;
+  font-weight: 700;
+  font-size: 2.515rem;                           /* condensed, width-fit 425 */
+  line-height: 3.55rem;                          /* design leading ~57 */
+  color: var(--navy-ink);
+}
+.p-home .hero__rule {
+  display: block; position: relative;
+  width: 23.1rem;                                /* 355 */
+  height: 0.13rem; background: var(--gold);
+  margin: 1.15rem 0 0;
+}
+.p-home .hero__rule .gem { width: 1.1rem; height: 1.1rem; }
+.p-home .hero__lede {
+  margin: 1.15rem 0 0;
+  max-width: 30rem;
+  font-size: 1.337rem;                           /* width-fit 442 */
+  line-height: 2.28rem;                          /* 36 */
+  color: var(--navy-ink);
+}
+.p-home .hero__tag {
+  margin: 0.95rem 0 0;
+  font-weight: 700;
+  font-size: 0.977rem;                           /* 15 */
+  line-height: 1.2rem;
+  letter-spacing: 0.02em;
+  color: var(--navy-ink);
+}
+.p-home .hero__btns { display: flex; gap: 1.43rem; margin-top: 1.45rem; }
+.p-home .btn {
+  flex: 0 0 auto;
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 3.646rem;                              /* 56 */
+  font-size: 0.977rem;                           /* 15 */
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.p-home .btn--navy { width: 17.06rem; background: var(--navy-bar); color: var(--cream-hi); }
+.p-home .btn--gold { width: 15.43rem; background: var(--gold); color: #fff; }
+.p-home .btn--navy:hover { background: #002a4d; }
+.p-home .btn--gold:hover { background: #a9720f; }
+
+/* ---- Services strip ---- */
+.p-home .svc { background: var(--cream-hi); padding: 0.4rem 0 1.7rem; text-align: center; }
+.p-home .svc__h {
+  margin: 0;
+  font-size: 1.5625rem;                          /* 24 */
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--navy-ink);
+}
+.p-home .svc__grid {
+  display: flex; justify-content: center; align-items: stretch;
+  max-width: 87.5rem; margin: 4.4rem auto 0;
+}
+.p-home .svc__item {
+  flex: 1 1 0;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 0 0.5rem;
+  border-left: 0.06rem solid var(--gold);
+}
+.p-home .svc__item:first-child { border-left: 0; }
+.p-home .svc__item img { width: 3.9rem; height: auto; }
+.p-home .svc__item p {
+  margin: 0.95rem 0 0;
+  font-size: 1.17rem;                            /* 18 */
+  line-height: 1.4;
+  color: var(--navy-ink);
+}
+
+/* ---- Quote band ---- */
+.p-home .quote {
+  background: var(--navy-foot);
+  padding: 1.7rem 1.5rem;
+  text-align: center;
+}
+.p-home .quote__line {
+  margin: 0;
+  font-style: italic;
+  font-size: 1.246rem;                           /* width-fit 546 */
+  color: var(--cream-hi);
+}
+.p-home .quote__mark {
+  color: var(--gold);
+  font-size: 2.2rem;
+  font-style: normal;
+  vertical-align: -0.35rem;
+  margin-right: 0.35rem;
+}
+
+/* ---- Home: tablet / mobile (< 1100px) ---- */
+@media (max-width: 1099.98px) {
+  .p-home .hdr { padding-top: 1.1rem; }
+  .p-home .hdr__lockup { text-align: center; }
+  .p-home .hdr__emblem { position: static; width: 64px; margin: 0 auto 0.4rem; }
+  .p-home .hdr__titles { width: auto; max-width: 40rem; margin: 0 auto; transform: none; padding: 0 1rem; }
+  .p-home .hdr__name { font-size: clamp(22px, 5.2vw, 40px); white-space: normal; margin-top: 0.6rem; }
+  .p-home .hdr__sub  { font-size: clamp(14px, 3.1vw, 25px); }
+
+  .p-home .hdr__nav { position: relative; display: block; padding: 0.4rem 1rem 0.6rem; }
+  .p-home .navtoggle { display: block; margin: 0 auto; }
+  .p-home .navtoggle span { background: var(--navy-ink); }
+  .p-home .navmenu {
+    display: none; flex-direction: column; align-items: center;
+    gap: 0.2rem; width: 100%; margin-top: 0.4rem;
+  }
+  .p-home .navmenu.is-open { display: flex; }
+  .p-home .navmenu a { font-size: 17px; padding: 0.5rem 0; }
+
+  .p-home .hero { height: auto; background: var(--cream-hi); }
+  .p-home .hero::before {
+    content: ""; display: block; width: 100%;
+    height: 42vw; max-height: 300px;
+    background: url("../img/hero-mobile.jpg") center 38% / cover no-repeat;
+  }
+  .p-home .hero__panel {
+    position: static; left: auto; top: auto;
+    width: auto; max-width: 40rem; margin: 0 auto;
+    padding: 1.8rem 1.35rem 2.2rem;
+  }
+  .p-home .hero__title { max-width: none; font-size: clamp(30px, 7vw, 50px); line-height: 1.06; }
+  .p-home .hero__rule { width: 60%; max-width: 355px; margin-top: 1.1rem; }
+  .p-home .hero__lede { max-width: none; font-size: clamp(17px, 3.6vw, 23px); line-height: 1.5; }
+  .p-home .hero__tag  { font-size: clamp(13px, 2.6vw, 16px); }
+  .p-home .hero__btns { flex-wrap: wrap; }
+  .p-home .btn { height: 52px; padding: 0 1.4rem; }
+  .p-home .btn--navy, .p-home .btn--gold { width: auto; min-width: 15rem; flex: 1 1 auto; }
+
+  .p-home .svc { padding: 2rem 1rem 2.4rem; }
+  .p-home .svc__h { font-size: 20px; }
+  .p-home .svc__grid { flex-wrap: wrap; margin-top: 1.8rem; row-gap: 2rem; }
+  .p-home .svc__item { flex: 0 0 33.333%; border-left: 0; }
+  .p-home .svc__item img { width: 52px; }
+  .p-home .svc__item p { font-size: 16px; }
+
+  .p-home .quote { padding: 1.4rem 1.25rem; }
+  .p-home .quote__line { font-size: clamp(16px, 3.4vw, 24px); }
+}
+@media (max-width: 560px) {
+  .p-home .svc__item { flex: 0 0 50%; }
+  .p-home .btn--navy, .p-home .btn--gold { flex: 1 1 100%; }
+}
