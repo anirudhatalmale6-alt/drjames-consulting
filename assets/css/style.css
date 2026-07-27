@@ -767,7 +767,7 @@ img { display: block; max-width: 100%; height: auto; }
 .p-home .hero {
   position: relative;
   width: 100%;
-  height: 31.77rem;                              /* photo ends ~y694 */
+  height: 34.5rem;                               /* photo ends ~y736 (full-height crop) */
   background: url("../img/hero.jpg") top center / 100% 100% no-repeat;
 }
 .p-home .hero__panel {
@@ -823,7 +823,7 @@ img { display: block; max-width: 100%; height: auto; }
 .p-home .btn--gold:hover { background: #a9720f; }
 
 /* ---- Services strip ---- */
-.p-home .svc { background: var(--cream-hi); padding: 0.4rem 0 1.7rem; text-align: center; }
+.p-home .svc { background: var(--cream-hi); padding: 0.7rem 0 1.7rem; text-align: center; }
 .p-home .svc__h {
   margin: 0;
   font-size: 1.5625rem;                          /* 24 */
@@ -834,7 +834,7 @@ img { display: block; max-width: 100%; height: auto; }
 }
 .p-home .svc__grid {
   display: flex; justify-content: center; align-items: stretch;
-  max-width: 87.5rem; margin: 4.4rem auto 0;
+  max-width: 87.5rem; margin: 1.1rem auto 0;
 }
 .p-home .svc__item {
   flex: 1 1 0;
