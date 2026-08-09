@@ -695,66 +695,63 @@ img { display: block; max-width: 100%; height: auto; }
 }
 
 /* ==========================================================================
-   HOME PAGE  —  "ACT Home Page" design (final, 2026-07-15)
-   Design canvas 1536 x 1024. Every value below is the measured original px
-   divided by 15.36 (= px * 1600/1536 / 16), so the page sits on the SAME rem
-   scale as the rest of the site (1rem = 16px at the shared 1600 canvas) and
-   the footer renders identically across pages.
+   HOME PAGE  —  design of 2026-08-09
+   Design canvas 1448 x 1086. Every value below is the measured original px
+   divided by 14.48, so the page sits on the SAME rem scale as the rest of the
+   site (1rem = 16px at the shared 1600 canvas).
    ========================================================================== */
 .p-home { background: var(--cream-hi); }
 
-/* ---- Header (rules + diamond lockup, centred, on cream) ---- */
-.p-home .hdr { background: var(--cream-hi); padding-top: 1.5625rem; }   /* rule top y24 */
-
-.p-home .hdr { position: relative; }
+/* ---- Header: emblem hard left, title block centred, single rule ---- */
+.p-home .hdr { position: relative; background: var(--cream-hi); padding-top: 0.307rem; }
 .p-home .hdr__lockup { position: relative; }
 .p-home .hdr__emblem {
   position: absolute;
-  left: 27.7rem;                  /* design gold mark x432 */
-  top: 2.7rem;                    /* y43 */
-  width: 5.25rem;                 /* ~80px */
+  left: 5.456rem;                 /* x79 */
+  top: 1.45rem;                   /* y21 */
+  width: 6.354rem;                /* 92 */
   height: auto;
 }
 .p-home .hdr__titles {
-  width: 42.32rem;                /* rules 650px wide */
+  width: 44rem;
   margin: 0 auto;
-  transform: translateX(4.6875rem);   /* centre the title block on design x840 */
+  transform: translateX(4.21rem); /* title block centres on design x785 */
   text-align: center;
 }
 
 .p-home .rule { display: block; position: relative; height: 0.13rem; background: var(--gold); width: 100%; }
-.p-home .rule--bot { margin-top: 1.15rem; }
+.p-home .rule--bot { width: 39.23rem; margin: 0.97rem auto 0; }   /* 568 */
 .p-home .gem {
   position: absolute; top: 50%; left: 50%;
-  width: 0.85rem; height: 0.85rem; background: var(--gold);
+  width: 0.95rem; height: 0.95rem; background: var(--gold);
   transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .p-home .hdr__name {
-  margin: 1.25rem 0 0;
+  margin: 0.62rem 0 0;
   font-weight: 400;
-  font-size: 2.705rem;            /* width-fit to 597px */
+  font-size: 2.898rem;            /* width-fit 609 */
   line-height: 0.9;
   letter-spacing: 0.01em;
   white-space: nowrap;
   color: var(--navy-ink);
 }
 .p-home .hdr__sub {
-  margin: 0.28rem 0 0;
-  font-size: 1.619rem;            /* width-fit 554 */
+  margin: 0.783rem 0 0;
+  font-size: 1.66rem;             /* width-fit 525 */
   color: var(--navy-ink);
 }
 
-/* ---- Nav (cream, navy links, centred) ---- */
+/* ---- Nav ---- */
 .p-home .hdr__nav {
   display: flex;
   justify-content: center;
-  padding: 2.45rem 1.5rem 0.5rem;   /* nav ink lands ~y183-201 */
+  padding: 1.395rem 1.5rem 0.886rem;
 }
-.p-home .navmenu { gap: 2.15rem; flex-wrap: nowrap; }
+.p-home .navmenu { gap: 2.256rem; flex-wrap: nowrap; transform: translateX(2.38rem); }
 .p-home .navmenu a {
-  font-size: 1.235rem;            /* ~19 */
-  line-height: 1.4rem;
+  font-size: 1.207rem;
+  line-height: 1.34rem;
   color: var(--navy-ink);
   padding: 0 0 0.25rem;
 }
@@ -763,70 +760,72 @@ img { display: block; max-width: 100%; height: auto; }
 .p-home .navmenu a.is-active { color: var(--navy-ink); }
 .p-home .navmenu a.is-active::after { height: 0.13rem; background: var(--navy-ink); bottom: 0; }
 
-/* ---- Hero (photo background with baked cream panel; live text on top) ---- */
+/* ---- Hero (photo background, live text on top) ---- */
 .p-home .hero {
   position: relative;
   width: 100%;
-  height: 34.5rem;                               /* photo ends ~y736 (full-height crop) */
+  height: 29.28rem;                              /* 424 */
   background: url("../img/hero.jpg") top center / 100% 100% no-repeat;
 }
 .p-home .hero__panel {
   position: absolute;
-  left: 21.55rem;                                /* x331 */
-  top: 3.27rem;                                  /* headline cap-top y264 (hero top y206) */
-  width: 34rem;
+  left: 11.33rem;                                /* x164 */
+  top: 1.809rem;                                 /* headline cap-top y199 */
+  width: 29rem;
 }
 .p-home .hero__title {
   margin: 0;
-  max-width: 34rem;
+  max-width: 29rem;
   font-family: "DejaVu Serif Condensed", "DejaVu Serif", Georgia, serif;
   font-weight: 700;
-  font-size: 2.515rem;                           /* condensed, width-fit 425 */
-  line-height: 3.55rem;                          /* design leading ~57 */
+  font-size: 2.345rem;                           /* width-fit 373 */
+  line-height: 3.315rem;                         /* 48 */
   color: var(--navy-ink);
 }
 .p-home .hero__rule {
   display: block; position: relative;
-  width: 23.1rem;                                /* 355 */
+  width: 25.83rem;                               /* 374 */
   height: 0.13rem; background: var(--gold);
-  margin: 1.15rem 0 0;
+  margin: 1.05rem 0 0;
 }
-.p-home .hero__rule .gem { width: 1.1rem; height: 1.1rem; }
+.p-home .hero__rule .gem { width: 1.15rem; height: 1.15rem; }
 .p-home .hero__lede {
-  margin: 1.15rem 0 0;
-  max-width: 30rem;
-  font-size: 1.337rem;                           /* width-fit 442 */
-  line-height: 2.28rem;                          /* 36 */
+  margin: 1.276rem 0 0;
+  max-width: none;
+  font-size: 1.1326rem;
+  letter-spacing: 0.016em;
+  line-height: 1.9rem;                           /* 27.5 */
   color: var(--navy-ink);
 }
 .p-home .hero__tag {
-  margin: 0.95rem 0 0;
+  margin: 0.843rem 0 0;
   font-weight: 700;
-  font-size: 0.977rem;                           /* 15 */
-  line-height: 1.2rem;
-  letter-spacing: 0.02em;
+  font-size: 0.8564rem;
+  line-height: 1.45rem;                          /* 21 */
+  letter-spacing: 0.06em;
   color: var(--navy-ink);
 }
-.p-home .hero__btns { display: flex; gap: 1.43rem; margin-top: 1.45rem; }
+.p-home .hero__btns { display: flex; gap: 1.04rem; margin-top: 1.012rem; }
 .p-home .btn {
   flex: 0 0 auto;
   display: inline-flex; align-items: center; justify-content: center;
-  height: 3.646rem;                              /* 56 */
-  font-size: 0.977rem;                           /* 15 */
+  height: 3.177rem;                              /* 46 */
+  font-size: 0.868rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
 }
-.p-home .btn--navy { width: 17.06rem; background: var(--navy-bar); color: var(--cream-hi); }
-.p-home .btn--gold { width: 15.43rem; background: var(--gold); color: #fff; }
+.p-home .btn--navy { width: 14.64rem; background: var(--navy-bar); color: var(--cream-hi); }
+.p-home .btn--gold { width: 12.78rem; background: var(--gold); color: #fff; }
 .p-home .btn--navy:hover { background: #002a4d; }
 .p-home .btn--gold:hover { background: #a9720f; }
 
 /* ---- Services strip ---- */
-.p-home .svc { background: var(--cream-hi); padding: 0.7rem 0 1.7rem; text-align: center; }
+.p-home .svc { background: var(--cream-hi); padding: 0.62rem 0 2.134rem; text-align: center; }
 .p-home .svc__h {
   margin: 0;
-  font-size: 1.5625rem;                          /* 24 */
+  font-size: 1.238rem;                           /* width-fit 123 */
+  padding-left: 3.46rem;             /* shifts the centred word to design x749 */
   font-weight: 400;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -834,7 +833,9 @@ img { display: block; max-width: 100%; height: auto; }
 }
 .p-home .svc__grid {
   display: flex; justify-content: center; align-items: stretch;
-  max-width: 87.5rem; margin: 1.1rem auto 0;
+  max-width: 86.03rem;                           /* 1211 + the design's 17px right bias */
+  margin: 0.705rem auto 0;
+  padding-left: 2.4rem;
 }
 .p-home .svc__item {
   flex: 1 1 0;
@@ -843,32 +844,111 @@ img { display: block; max-width: 100%; height: auto; }
   border-left: 0.06rem solid var(--gold);
 }
 .p-home .svc__item:first-child { border-left: 0; }
-.p-home .svc__item img { width: 3.9rem; height: auto; }
+.p-home .svc__item img { width: 4.42rem; height: auto; }
 .p-home .svc__item p {
-  margin: 0.95rem 0 0;
-  font-size: 1.17rem;                            /* 18 */
+  margin: 0.78rem 0 0;
+  font-size: 1.121rem;
   line-height: 1.4;
   color: var(--navy-ink);
 }
 
-/* ---- Quote band ---- */
-.p-home .quote {
-  background: var(--navy-foot);
-  padding: 1.7rem 1.5rem;
+/* ==========================================================================
+   HOME FOOTER — quote line sits inside the navy band in this design
+   ========================================================================== */
+.foot--home { background: var(--navy-foot); color: var(--cream-hi); padding-bottom: 1.8rem; }
+.foot--home p { margin: 0; }
+
+.foot--home .foot__quote {
+  padding-top: 1.62rem;                          /* glyph top y799 */
   text-align: center;
-}
-.p-home .quote__line {
-  margin: 0;
+  padding-left: 2.76rem;             /* centres the line on design x744 */
   font-style: italic;
-  font-size: 1.246rem;                           /* width-fit 546 */
+  font-size: 1.312rem;
   color: var(--cream-hi);
 }
-.p-home .quote__mark {
-  color: var(--gold);
-  font-size: 2.2rem;
+.foot--home .foot__q {
+  color: var(--gold-lt);
+  font-size: 2.5rem;
+  font-weight: 700;
   font-style: normal;
-  vertical-align: -0.35rem;
-  margin-right: 0.35rem;
+  line-height: 0;
+  vertical-align: -0.85rem;
+}
+.foot--home .foot__q:first-child { margin-right: 0.42rem; }
+.foot--home .foot__q:last-child  { margin-left: 0.42rem; }
+
+.foot--home .foot__in {
+  position: static;
+  display: flex;
+  align-items: flex-start;
+  height: auto;
+  max-width: none;
+  padding: 1.72rem 0 0 10.98rem;                 /* left column ink at x161 */
+}
+
+.foot--home .foot__person { position: static; flex: 0 0 26.8rem; }
+.foot--home .foot__name {
+  font-size: 1.783rem;                           /* width-fit 300 */
+  font-weight: 400;
+  line-height: 1.9rem;
+  color: var(--gold-lt);
+}
+.foot--home .foot__creds {
+  margin-top: 0.674rem;
+  font-size: 1.135rem;
+  line-height: 2.17rem;                          /* 31.4 */
+  color: var(--cream-hi);
+}
+
+.foot--home .foot__right { flex: 1 1 auto; padding-top: 1.651rem; }
+
+.foot--home .foot__services {
+  position: static;
+  margin-left: 0.2rem;
+  font-size: 1.652rem;
+  font-weight: 400;
+  line-height: 1.9rem;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+.foot--home .foot__services i { font-style: normal; color: var(--gold-lt); margin: 0 0.325rem; }
+
+.foot--home .foot__contact {
+  position: static;
+  display: flex;
+  align-items: center;
+  margin-top: 2.948rem;
+  gap: 2.62rem;
+  font-size: 1.045rem;
+  line-height: 1.45rem;
+}
+.foot--home .foot__stack { display: flex; flex-direction: column; gap: 0.76rem; }
+.foot--home .foot__ci {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.312rem;
+  color: var(--cream-hi);
+  text-decoration: none;
+}
+.foot--home a.foot__ci:hover,
+.foot--home a.foot__ci:focus-visible { color: var(--gold-lt); }
+.foot--home .foot__ci svg {
+  flex: 0 0 auto;
+  width: 1.865rem; height: 1.865rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.foot--home .foot__copy {
+  position: static;
+  margin-top: 2.702rem;
+  text-align: center;
+  font-size: 1.084rem;
+  line-height: 1.1rem;
+  color: var(--gold-lt);
 }
 
 /* ---- Home: tablet / mobile (< 1100px) ---- */
@@ -894,7 +974,7 @@ img { display: block; max-width: 100%; height: auto; }
   .p-home .hero::before {
     content: ""; display: block; width: 100%;
     height: 42vw; max-height: 300px;
-    background: url("../img/hero-mobile.jpg") center 38% / cover no-repeat;
+    background: url("../img/hero-mobile.jpg") center 40% / cover no-repeat;
   }
   .p-home .hero__panel {
     position: static; left: auto; top: auto;
@@ -902,24 +982,50 @@ img { display: block; max-width: 100%; height: auto; }
     padding: 1.8rem 1.35rem 2.2rem;
   }
   .p-home .hero__title { max-width: none; font-size: clamp(30px, 7vw, 50px); line-height: 1.06; }
-  .p-home .hero__rule { width: 60%; max-width: 355px; margin-top: 1.1rem; }
+  .p-home .hero__rule { width: 60%; max-width: 374px; margin-top: 1.1rem; }
   .p-home .hero__lede { max-width: none; font-size: clamp(17px, 3.6vw, 23px); line-height: 1.5; }
-  .p-home .hero__tag  { font-size: clamp(13px, 2.6vw, 16px); }
-  .p-home .hero__btns { flex-wrap: wrap; }
+  .p-home .hero__lede br { display: none; }
+  .p-home .navmenu { transform: none; }
+  .p-home .hero__tag  { font-size: clamp(13px, 2.6vw, 16px); line-height: 1.5; }
+  .p-home .hero__btns { flex-wrap: wrap; gap: 14px; }
   .p-home .btn { height: 52px; padding: 0 1.4rem; }
   .p-home .btn--navy, .p-home .btn--gold { width: auto; min-width: 15rem; flex: 1 1 auto; }
 
   .p-home .svc { padding: 2rem 1rem 2.4rem; }
-  .p-home .svc__h { font-size: 20px; }
-  .p-home .svc__grid { flex-wrap: wrap; margin-top: 1.8rem; row-gap: 2rem; }
+  .p-home .svc__h { font-size: 20px; padding-left: 0; }
+  .p-home .svc__grid { flex-wrap: wrap; margin-top: 1.8rem; row-gap: 2rem; max-width: none; padding-left: 0; }
   .p-home .svc__item { flex: 0 0 33.333%; border-left: 0; }
   .p-home .svc__item img { width: 52px; }
   .p-home .svc__item p { font-size: 16px; }
 
-  .p-home .quote { padding: 1.4rem 1.25rem; }
-  .p-home .quote__line { font-size: clamp(16px, 3.4vw, 24px); }
+  /* footer stacks */
+  .foot--home { padding-bottom: 26px; }
+  .foot--home .foot__quote { padding: 26px 20px 0; font-size: clamp(16px, 3.4vw, 24px); }
+  .p-home .rule--bot { width: auto; max-width: 100%; }
+  .foot--home .foot__q { font-size: 1.6em; }
+  .foot--home .foot__in {
+    display: block;
+    padding: 28px 16px 0;
+  }
+  .foot--home .foot__person { text-align: center; }
+  .foot--home .foot__name { font-size: 28px; line-height: 34px; }
+  .foot--home .foot__creds { font-size: 16px; line-height: 28px; margin-top: 10px; }
+  .foot--home .foot__right { padding-top: 26px; text-align: center; }
+  .foot--home .foot__services { white-space: normal; font-size: 20px; line-height: 30px; }
+  .foot--home .foot__services i { margin: 0 10px; }
+  .foot--home .foot__contact {
+    flex-wrap: wrap; justify-content: center;
+    margin-top: 20px; gap: 12px 26px; font-size: 15px;
+  }
+  .foot--home .foot__stack { gap: 12px; }
+  .foot--home .foot__ci svg { width: 19px; height: 19px; }
+  .foot--home .foot__copy { margin-top: 24px; font-size: 13px; }
 }
 @media (max-width: 560px) {
   .p-home .svc__item { flex: 0 0 50%; }
   .p-home .btn--navy, .p-home .btn--gold { flex: 1 1 100%; }
+  .foot--home .foot__contact { font-size: 13px; }
+  .foot--home .foot__ci { gap: 10px; }
+  .foot--home .foot__ci { max-width: 100%; }
+  .foot--home .foot__ci span { word-break: break-word; }
 }
