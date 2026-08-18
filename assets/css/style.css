@@ -440,6 +440,8 @@ img { display: block; max-width: 100%; height: auto; }
   .foot__creds    { font-size: 15px; line-height: 28px; }
   .foot__services { font-size: 19px; line-height: 30px; margin-top: 24px; }
   .foot__contact  { justify-content: center; margin-top: 22px; font-size: 15px; gap: 6px 22px; }
+  /* the address is one long unbreakable token — let it wrap on narrow phones */
+  .foot__contact a { max-width: 100%; overflow-wrap: anywhere; }
   .foot__copy     { margin-top: 24px; font-size: 13px; }
 }
 
