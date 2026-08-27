@@ -1127,3 +1127,177 @@ img { display: block; max-width: 100%; height: auto; }
             mask-image: linear-gradient(to bottom, #000 calc(100% - 46px), rgba(0,0,0,0) 100%);
   }
 }
+
+/* ==========================================================================
+   APPOINTMENTS PAGE  —  design of 2026-08-26 (21:48)
+   The design arrived on a 1024 x 1536 portrait canvas instead of the 1448 x
+   1086 the other pages use, so its numbers are kept literal and re-scaled by
+   a single unit: --u is one pixel of that canvas. Every value below IS the
+   measured design pixel, so the whole composition moves with one number.
+   ========================================================================== */
+.p-appt {
+  --s: 0.86;                                   /* composition scale on the 1448 canvas */
+  --u: calc(0.069061rem * var(--s));           /* 1 design px */
+}
+
+.appt {
+  background: var(--cream-hi);
+  /* the design's face is a narrow display serif — the condensed cut is the
+     closest of the two the site self-hosts, same choice as the About page */
+  font-family: "DejaVu Serif Condensed", "DejaVu Serif", Georgia, serif;
+  padding-top: calc(var(--u) * 79);            /* nav underline y286 -> cap-top y403 */
+  padding-bottom: calc(var(--u) * 87);         /* design keeps 87px under the last line */
+  text-align: center;
+  color: var(--navy-ink);
+}
+.appt__in { max-width: calc(var(--u) * 1024); margin: 0 auto; padding: 0 1.35rem; }
+
+.appt__title {
+  margin: 0;
+  font-family: "DejaVu Serif Condensed", "DejaVu Serif", Georgia, serif;
+  font-weight: 700;
+  font-size: calc(var(--u) * 64);              /* width-fit 530 / 753 */
+  line-height: calc(var(--u) * 103);           /* cap-top 403 -> 506 */
+  letter-spacing: 0;
+}
+
+/* ---- gold rule with its diamond, as on the rest of the site ---- */
+.appt__rule {
+  display: block;
+  position: relative;
+  width: calc(var(--u) * 488);
+  height: calc(var(--u) * 2);
+  margin: calc(var(--u) * 52) auto 0;          /* cap-top 506 -> rule centre 637 */
+  background: var(--gold);
+}
+.appt__rule .gem {
+  position: absolute; top: 50%; left: 50%;
+  width: calc(var(--u) * 15.6); height: calc(var(--u) * 15.6);
+  background: var(--gold);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.appt__rule--wide { width: calc(var(--u) * 666); margin-top: calc(var(--u) * 54); }
+
+.appt__lede {
+  margin: calc(var(--u) * 43) 0 0;             /* rule centre 637 -> ink top 694 */
+  font-size: calc(var(--u) * 31.5);            /* width-fit 592 / 633 */
+  line-height: calc(var(--u) * 56);
+}
+
+/* ---- the call to action ---- */
+.appt__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--u) * 37);
+  width: calc(var(--u) * 658);
+  height: calc(var(--u) * 153);
+  margin: calc(var(--u) * 62) auto 0;          /* lede line 2 -> button top y854 */
+  border: calc(var(--u) * 2.5) solid var(--gold);
+  border-radius: calc(var(--u) * 12);
+  background: linear-gradient(180deg, #012049 0%, #001b3d 55%, #011a3f 100%);
+  box-shadow: 0 calc(var(--u) * 4) calc(var(--u) * 9) rgba(5, 26, 47, 0.22);
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.18s ease, box-shadow 0.18s ease;
+}
+.appt__cta:hover,
+.appt__cta:focus-visible {
+  background: linear-gradient(180deg, #03306b 0%, #00265a 55%, #012a5c 100%);
+  box-shadow: 0 calc(var(--u) * 5) calc(var(--u) * 12) rgba(5, 26, 47, 0.3);
+}
+.appt__cta svg {
+  flex: 0 0 auto;
+  width: calc(var(--u) * 87); height: calc(var(--u) * 91);
+  fill: none;
+  stroke: var(--gold-lt);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+/* the pencil punches a gap through the page outline, as the design draws it */
+.appt__cta svg .cut { fill: #011c40; stroke: #011c40; stroke-width: 9; }
+
+.appt__cta span {
+  font-weight: 700;
+  font-size: calc(var(--u) * 36.7);            /* width-fit 434 */
+  line-height: 1;
+  letter-spacing: 0.012em;
+  text-transform: uppercase;
+}
+
+.appt__note {
+  margin: calc(var(--u) * 59) 0 0;             /* button bottom 1006 -> ink top 1080 */
+  font-size: calc(var(--u) * 32.9);            /* width-fit 260 / 502 */
+  line-height: calc(var(--u) * 56);
+}
+
+/* ---- phone ---- */
+.appt__phone { margin: calc(var(--u) * 48) 0 0; }
+.appt__phone a {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--u) * 34);
+  color: var(--navy-ink);
+  text-decoration: none;
+}
+.appt__ring {
+  flex: 0 0 auto;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: calc(var(--u) * 83); height: calc(var(--u) * 83);
+  border: calc(var(--u) * 4) solid var(--gold);
+  border-radius: 50%;
+}
+.appt__ring svg { width: calc(var(--u) * 46); height: calc(var(--u) * 46); fill: var(--gold); }
+.appt__num {
+  font-weight: 700;
+  font-size: calc(var(--u) * 57.5);            /* width-fit 404 */
+  line-height: 1;
+}
+.appt__phone a:hover .appt__num,
+.appt__phone a:focus-visible .appt__num { color: var(--gold); }
+
+.appt__tag {
+  margin: calc(var(--u) * 40) 0 0;             /* rule centre 1365 -> ink top 1416 */
+  font-weight: 700;
+  font-style: italic;
+  font-size: calc(var(--u) * 25.2);            /* width-fit 644 */
+  line-height: calc(var(--u) * 44);
+}
+
+/* ---- Appointments: tablet / mobile (< 1100px) ---- */
+@media (max-width: 1099.98px) {
+  .p-appt { --u: 1px; }
+  .appt { padding-top: 1.7rem; padding-bottom: 3.4rem; }
+  .appt__in { max-width: 40rem; }
+  /* the designed break is kept here: sized so "15-Minute Consultation" always
+     fits one line, which stops the browser breaking it at the hyphen */
+  .appt__title { font-size: min(calc(7.9vw - 3px), 48px); line-height: 1.14; }
+  .appt__rule { width: min(74%, 330px); height: 2px; margin-top: 1.05rem; }
+  .appt__rule .gem { width: 11px; height: 11px; }
+  .appt__rule--wide { width: min(88%, 420px); margin-top: 1.5rem; }
+  .appt__lede { margin-top: 1.15rem; font-size: clamp(17px, 3.9vw, 24px); line-height: 1.5; }
+  .appt__lede br { display: none; }
+  .appt__cta {
+    width: min(100%, 26rem);
+    height: auto;
+    gap: 1rem;
+    margin-top: 1.6rem;
+    padding: 0.85rem 1.1rem;
+    border-width: 2px;
+    border-radius: 9px;
+  }
+  .appt__cta svg { width: 44px; height: 46px; stroke-width: 6; }
+  /* the pencil punches a gap through the page outline, as the design draws it */
+.appt__cta svg .cut { fill: #011c40; stroke: #011c40; stroke-width: 9; }
+
+.appt__cta span { font-size: clamp(16px, 3.7vw, 23px); }
+  .appt__note { margin-top: 1.7rem; font-size: clamp(17px, 3.9vw, 24px); line-height: 1.5; }
+  .appt__note br { display: none; }
+  .appt__phone { margin-top: 1.5rem; }
+  .appt__phone a { gap: 0.75rem; }
+  .appt__ring { width: 46px; height: 46px; border-width: 2px; }
+  .appt__ring svg { width: 26px; height: 26px; }
+  .appt__num { font-size: clamp(28px, 6.6vw, 44px); }
+  .appt__tag { margin-top: 1.15rem; font-size: clamp(16px, 3.5vw, 22px); line-height: 1.4; }
+}
