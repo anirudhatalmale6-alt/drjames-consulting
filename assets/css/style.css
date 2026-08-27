@@ -1042,7 +1042,9 @@ img { display: block; max-width: 100%; height: auto; }
 
 .about__in {
   position: relative;
-  height: 61.19rem;                 /* 886 : design y200 -> y1086 */
+  /* 886 (design y200 -> y1086) + 68 of breathing room before the footer.
+     Nothing inside the composition moves — the extra height is added below it. */
+  height: 65.885rem;
 }
 
 /* screen-reader heading — the design carries no visible page title */
@@ -1087,8 +1089,12 @@ img { display: block; max-width: 100%; height: auto; }
   position: absolute;
   z-index: 1;
   right: 0;
-  bottom: 0;
+  top: -0.69rem;                    /* design y190 — unchanged against the copy */
   width: 58.564rem;                 /* 848 : design x600 -> x1448 */
+  /* the design ran the photograph off the bottom of the page. Now that a footer
+     follows it, the cut edge is dissolved into the cream instead of sliced. */
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 5.5rem), rgba(0,0,0,0) 100%);
+          mask-image: linear-gradient(to bottom, #000 calc(100% - 5.5rem), rgba(0,0,0,0) 100%);
 }
 .about__photo img { width: 100%; height: auto; }
 
@@ -1100,7 +1106,7 @@ img { display: block; max-width: 100%; height: auto; }
     height: auto;
     max-width: 40rem;
     margin: 0 auto;
-    padding: 1.6rem 1.35rem 2.2rem;
+    padding: 1.6rem 1.35rem 3.4rem;
   }
   .about__text { position: static; width: auto; }
   .about__text br { display: none; }
@@ -1117,7 +1123,7 @@ img { display: block; max-width: 100%; height: auto; }
     width: 100%;
     max-width: 30rem;
     margin: 1.9rem auto 0;
-    -webkit-mask-image: none;
-            mask-image: none;
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 46px), rgba(0,0,0,0) 100%);
+            mask-image: linear-gradient(to bottom, #000 calc(100% - 46px), rgba(0,0,0,0) 100%);
   }
 }
