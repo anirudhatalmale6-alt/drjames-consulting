@@ -484,12 +484,16 @@ img { display: block; max-width: 100%; height: auto; }
   html.svc { font-size: 16px; }
 }
 
-/* ---- nav ---------------------------------------------------------------- */
+/* ---- nav ----------------------------------------------------------------
+   These sized the Services page's own navy top bar. The Services page now
+   carries the site-wide banner instead, so every rule here is scoped inside
+   .topbar and cannot reach the shared nav. Kept, not deleted: restoring the
+   old bar is a markup swap, nothing else. */
 @media (min-width: 1100px) {
   .p-services .topbar { height: 4.45902rem; }               /* 68 on this design's scale */
   .p-services .topbar__nav { height: 4.45902rem; padding: 0 3.14754rem; }  /* ink starts x48 */
-  .p-services .navmenu { gap: 2.72131rem; }            /* 41.5 -> line ends x1261 */
-  .p-services .navmenu a { font-size: 1.31148rem; line-height: 1.63934rem; }  /* 20 */
+  .p-services .topbar .navmenu { gap: 2.72131rem; }            /* 41.5 -> line ends x1261 */
+  .p-services .topbar .navmenu a { font-size: 1.31148rem; line-height: 1.63934rem; }  /* 20 */
 }
 
 /* ---- brand bar ---------------------------------------------------------- */
@@ -704,8 +708,17 @@ img { display: block; max-width: 100%; height: auto; }
    ========================================================================== */
 .p-brand { background: var(--cream-hi); }
 
-/* ---- Header: emblem hard left, title block centred, single rule ---- */
-.p-brand .hdr { position: relative; background: var(--cream-hi); padding-top: 0.307rem; }
+/* ---- Header: emblem hard left, title block centred, single rule ----
+   This block is the SITE-WIDE banner: identical markup and identical values on
+   every page. The face is pinned here rather than inherited, so a page that
+   sets a different body font (Services runs on the condensed cut) still draws
+   the banner in the same face as the rest of the site. */
+.p-brand .hdr {
+  position: relative;
+  background: var(--cream-hi);
+  padding-top: 0.307rem;
+  font-family: "DejaVu Serif", Georgia, "Times New Roman", serif;
+}
 .p-brand .hdr__lockup { position: relative; }
 .p-brand .hdr__emblem {
   position: absolute;
