@@ -1314,3 +1314,133 @@ img { display: block; max-width: 100%; height: auto; }
   .appt__num { font-size: clamp(28px, 6.6vw, 44px); }
   .appt__tag { margin-top: 1.15rem; font-size: clamp(16px, 3.5vw, 22px); line-height: 1.4; }
 }
+
+/* ==========================================================================
+   WHO I SERVE PAGE  —  design of 2026-08-30
+   The design arrived on the same 1024 x 1536 portrait canvas the Appointments
+   design used, so it is built the same way: --u is one pixel of that canvas.
+
+   Unlike the Appointments design, this one draws its NAV at the site's real
+   size — the eight labels width-fit at 17.46px against the 17.48px the shared
+   banner actually renders — so the canvas maps 1:1 and --s is 1. That is also
+   what the composition says: the design's card is 0.80 of its nav's width, and
+   at --s 1 it comes out 0.77 of the real nav. Two independent checks agree.
+   (The lockup is the exception: this design draws the name ~27% larger than
+   the site does. That is the header-scale question already raised with her;
+   the banner is a shared block and is not touched here.)
+   ========================================================================== */
+.p-serve {
+  --s: 1;                                      /* composition scale on the 1448 canvas */
+  --u: calc(0.069061rem * var(--s));           /* 1 design px */
+}
+
+.serve {
+  background: var(--cream-hi);
+  /* design: nav underline y253 -> card top y319. The shared banner already
+     keeps 12.8px under its underline, so the padding carries the remaining 53. */
+  padding-top: calc(var(--u) * 53);
+  padding-bottom: calc(var(--u) * 43);         /* card bottom y1189 -> footer y1232 */
+  color: var(--navy-ink);
+}
+
+/* screen-reader heading — the design carries no visible page title,
+   the same situation as the About page */
+.serve__sr {
+  position: absolute; width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  clip: rect(0 0 0 0); clip-path: inset(50%);
+  overflow: hidden; white-space: nowrap;
+}
+
+.serve__card {
+  width: calc(var(--u) * 779.1);               /* outer edges x121.7 -> x900.8 */
+  margin: 0 auto;
+  border: calc(var(--u) * 2.6) solid var(--gold);
+  border-radius: calc(var(--u) * 18.5);
+  padding: calc(var(--u) * 40) 0 calc(var(--u) * 49);
+}
+
+/* ---- the two centred lines at the top of the card ---- */
+.serve__lede {
+  margin: 0;
+  /* the design's face is a narrow display serif — the condensed cut is the
+     closest of the two the site self-hosts, same choice as About and
+     Appointments */
+  font-family: "DejaVu Serif Condensed", "DejaVu Serif", Georgia, serif;
+  font-size: calc(var(--u) * 29.5);            /* width-fit 452 / 503 */
+  line-height: calc(var(--u) * 55);            /* ink top y372 -> y427 */
+  text-align: center;
+}
+
+/* ---- the checklist ---- */
+.serve__list {
+  margin: calc(var(--u) * 50) 0 0;             /* heading ink -> icon 1 top y521 */
+  padding: 0;
+  list-style: none;
+}
+
+.serve__list li {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--u) * 31);                    /* icon right x236 -> ink x267 */
+  padding-left: calc(var(--u) * 76);           /* card inner edge -> icon x199 */
+  /* the row is exactly the icon's height, so the 72.5px pitch the design draws
+     between icon centres is set once, on the gap below */
+  min-height: calc(var(--u) * 37.2);
+  font-family: "DejaVu Serif Condensed", "DejaVu Serif", Georgia, serif;
+  font-size: calc(var(--u) * 23.1);            /* width-fit, least squares over the 9 rows */
+  line-height: calc(var(--u) * 37.2);
+}
+.serve__list li + li { margin-top: calc(var(--u) * 35.3); }   /* 72.5 pitch */
+
+.serve__check {
+  flex: 0 0 auto;
+  display: block;
+  width: calc(var(--u) * 37.2);
+  height: calc(var(--u) * 37.2);
+  fill: none;
+  stroke: var(--gold);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.serve__check .ring { stroke-width: 1.94; }    /* design ring 3px  */
+.serve__check .tick { stroke-width: 2.84; }    /* design tick 4.4px */
+
+/* ==========================================================================
+   Who I Serve: tablet / mobile (< 1100px)
+   ========================================================================== */
+@media (max-width: 1099.98px) {
+  .p-serve { --u: 1px; }
+
+  .serve { padding: 1.9rem 1.1rem 2.6rem; }
+  .serve__card {
+    width: auto;
+    max-width: 40rem;
+    margin: 0 auto;
+    border-width: 2px;
+    border-radius: 14px;
+    padding: 1.6rem 1.35rem 1.8rem;
+  }
+  .serve__lede {
+    font-size: clamp(19px, 4.2vw, 27px);
+    line-height: 1.42;
+  }
+  .serve__lede br { display: none; }
+
+  .serve__list { margin-top: 1.5rem; }
+  .serve__list li {
+    padding-left: 0;
+    gap: 0.85rem;
+    min-height: 0;
+    font-size: clamp(16px, 3.5vw, 21px);
+    line-height: 1.4;
+    align-items: flex-start;
+  }
+  .serve__list li + li { margin-top: 1.05rem; }
+  .serve__check {
+    width: clamp(24px, 5.2vw, 30px);
+    height: clamp(24px, 5.2vw, 30px);
+    /* keeps the ring optically on the first line once the label wraps */
+    margin-top: 0.05em;
+  }
+}
