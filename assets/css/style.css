@@ -261,6 +261,11 @@ img { display: block; max-width: 100%; height: auto; }
 .foot {
   background: var(--navy-foot);
   color: var(--cream-hi);
+  /* The footer is a site-wide component drawn in the Home design's face. Pin it
+     here rather than inheriting, so a page that runs on a different body font
+     (Services and Knowledge Is Power use the condensed cut) still draws the
+     same footer as every other page. */
+  font-family: "DejaVu Serif", Georgia, "Times New Roman", serif;
 }
 
 .foot__in {
@@ -1443,4 +1448,242 @@ img { display: block; max-width: 100%; height: auto; }
     /* keeps the ring optically on the first line once the label wraps */
     margin-top: 0.05em;
   }
+}
+
+/* ==========================================================================
+   KNOWLEDGE IS POWER PAGE  —  design of 2026-09-04
+
+   The design arrived on a 1448 x 1086 canvas: the SAME canvas the Home design
+   uses (see css_home.css). One design pixel is therefore one CSS pixel at the
+   1448 reference width, so --s is 1 and --u maps 1:1 — no guessing required.
+
+   The design redraws the shared banner much larger than the site renders it
+   (title ink 904px against the site's 610, emblem 114px against 92, nav labels
+   at a 17px cap against the site's 12.7) and in a bluer navy. That is the
+   AI drift the client has already ruled on: on a shared block the site wins.
+   So the banner is untouched here, and everything below it is anchored to the
+   NAV UNDERLINE rather than to the design's absolute y — the design keeps 55px
+   between the underline and the first line of text, and so does this page.
+
+   The four article rows are drawn with a shrinking pitch (154.5, 149, 145);
+   that is drift too, not intent, so the pitch here is a single fitted value.
+   ========================================================================== */
+.p-kip {
+  --s: 1;                                      /* design canvas maps 1:1 */
+  --u: calc(0.069061rem * var(--s));           /* 1 design px */
+  /* the design sets its link text distinctly darker than its rules; the rules
+     themselves are the site's --gold. Keeping the link on --gold would drop it
+     to 3:1 against the cream, which is under the readable-text threshold. */
+  --gold-dk: #8a4a12;
+  font-family: "DejaVu Serif Condensed", "DejaVu Serif", Georgia, serif;
+}
+
+.kip {
+  background: var(--cream-hi);
+  color: var(--navy-ink);
+  /* nav underline -> first line of text is 55 in the design; the shared banner
+     already keeps 13.4 of it below the underline, and the lede's own half
+     leading carries a further 5.6 */
+  padding-top: calc(var(--u) * 36);
+  padding-bottom: calc(var(--u) * 46);
+}
+
+/* screen-reader heading — the design carries no visible page title, the same
+   situation as About and Who I Serve */
+.kip__sr {
+  position: absolute; width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  clip: rect(0 0 0 0); clip-path: inset(50%);
+  overflow: hidden; white-space: nowrap;
+}
+
+.kip__in {
+  width: calc(var(--u) * 957);                 /* rules x246 -> x1202 */
+  margin: 0 auto;
+}
+
+/* ---- the two paragraphs above the divider ---- */
+.kip__lede {
+  margin: 0;
+  /* the design's first line runs 8px past the rule below it; the block is a
+     touch wider than the column so the line breaks exactly where drawn */
+  width: calc(var(--u) * 972);
+  font-size: calc(var(--u) * 22.3);            /* width-fit over 3 lines */
+  line-height: calc(var(--u) * 32);
+}
+.kip__lede + .kip__lede { margin-top: calc(var(--u) * 4); }
+
+/* ---- divider ---- */
+.p-kip .rule--kip {
+  width: 100%;
+  height: calc(var(--u) * 2);
+  margin: calc(var(--u) * 36.5) auto 0;        /* lede ink bottom -> rule y390 */
+}
+.p-kip .rule--kip .gem {
+  width: calc(var(--u) * 18.4);                /* 26px across the diagonal */
+  height: calc(var(--u) * 18.4);
+}
+
+/* ==========================================================================
+   The article list
+   ========================================================================== */
+.kip__list {
+  margin: calc(var(--u) * 10.3) 0 0;           /* rule -> first row box top */
+  padding: 0;
+  list-style: none;
+}
+
+.kip__item {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--u) * 45);                    /* icon right x379 -> ink x423.5 */
+  /* the design's own pitch collapses down the page (154.5, 149, 145) and its
+     padding is not symmetric; a joint least-squares fit over the four icons AND
+     the four rules gives 13.7 above, 11.5 below, pitch 147.7 — which lands every
+     one of the eight within 5px of where it is drawn */
+  padding: calc(var(--u) * 13.7) 0 calc(var(--u) * 11.5);
+  border-bottom: calc(var(--u) * 2) solid var(--gold);
+}
+
+.kip__icon {
+  flex: 0 0 auto;
+  width: calc(var(--u) * 120);
+  height: calc(var(--u) * 120);
+  border-radius: 50%;
+  background: #f9e1c1;                         /* measured off the design */
+  /* the icons sit 13px inside the rule, not flush with it */
+  margin-left: calc(var(--u) * 13);
+}
+.kip__ic { display: block; width: 100%; height: 100%; }
+.kip__ic .nv { fill: var(--navy-ink); }
+.kip__ic .cr { fill: #f9e1c1; }
+.kip__ic .st { fill: none; stroke: var(--navy-ink); stroke-linecap: round; stroke-linejoin: round; }
+.kip__ic .cst { fill: none; stroke: #f9e1c1; stroke-linecap: round; stroke-linejoin: round; }
+
+.kip__body {
+  width: calc(var(--u) * 560);
+  /* the design sets the text block ~4px below the icon's centre rather than
+     dead on it. This has to be a relative offset, not a margin: the text block
+     is 120.5 tall and is what actually drives the row height, so a margin would
+     stretch the row instead of moving the text inside it. */
+  position: relative;
+  top: calc(var(--u) * 4);
+}
+
+.kip__title {
+  margin: 0;
+  font-weight: 700;
+  font-size: calc(var(--u) * 24.25);           /* width-fit, mean of the four */
+  line-height: calc(var(--u) * 28);
+  color: var(--navy-ink);
+}
+
+.kip__sum {
+  margin: calc(var(--u) * 5) 0 0;              /* title ink -> summary ink = 32 */
+  font-size: calc(var(--u) * 22.3);
+  line-height: calc(var(--u) * 27);
+}
+
+.kip__more {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--u) * 8);                     /* text ends x550, arrow x558 */
+  margin-top: calc(var(--u) * 6.5);            /* summary ink -> link ink = 32 */
+  font-size: calc(var(--u) * 22.3);
+  line-height: calc(var(--u) * 27);
+  color: var(--gold-dk);
+  text-decoration: none;
+}
+.kip__more:hover,
+.kip__more:focus-visible { text-decoration: underline; }
+
+.kip__arrow {
+  display: block;
+  width: calc(var(--u) * 19);                  /* arrow ink x558 -> x576 */
+  height: calc(var(--u) * 14);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ==========================================================================
+   "Have a topic…" — the closing note
+   ========================================================================== */
+.kip__ask {
+  display: flex;
+  align-items: flex-start;
+  gap: calc(var(--u) * 17);                    /* diamond box right x277 -> ink x294 */
+  margin: calc(var(--u) * 14) 0 0;             /* last rule -> first line ink = 19 */
+  padding-left: calc(var(--u) * 15);           /* diamond sits on the icon axis */
+  font-size: calc(var(--u) * 24.3);            /* width-fit over both lines */
+  line-height: calc(var(--u) * 28);
+}
+
+.kip__dia {
+  flex: 0 0 auto;
+  width: calc(var(--u) * 16);                  /* 23px across the diagonal */
+  height: calc(var(--u) * 16);
+  margin-top: calc(var(--u) * 6.6);            /* centres on the first line */
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+/* the footer is a site-wide component drawn in the Home design's face; this
+   page runs on the condensed cut, so pin it back the way Services does */
+.p-kip .foot { font-family: "DejaVu Serif", Georgia, "Times New Roman", serif; }
+
+/* ==========================================================================
+   Knowledge Is Power: tablet / mobile (< 1100px)
+   ========================================================================== */
+@media (max-width: 1099.98px) {
+  .p-kip { --u: 1px; }
+
+  .kip { padding: 1.6rem 1.1rem 2.2rem; }
+  .kip__in { width: auto; max-width: 42rem; }
+
+  /* the desktop line breaks are drawn into the design; on a phone the text has
+     to find its own */
+  .kip__lede br,
+  .kip__sum br { display: none; }
+
+  .kip__lede {
+    width: auto;
+    font-size: clamp(16px, 3.6vw, 21px);
+    line-height: 1.45;
+  }
+  .kip__lede + .kip__lede { margin-top: 0.6rem; }
+
+  .p-kip .rule--kip { height: 2px; margin-top: 1.5rem; }
+  .p-kip .rule--kip .gem { width: 14px; height: 14px; }
+
+  .kip__list { margin-top: 0.6rem; }
+
+  .kip__item {
+    gap: 0.95rem;
+    padding: 1.15rem 0;
+    border-bottom-width: 2px;
+    align-items: flex-start;
+  }
+  .kip__icon {
+    width: clamp(56px, 15vw, 78px);
+    height: clamp(56px, 15vw, 78px);
+    margin-left: 0;
+  }
+  .kip__body { width: auto; flex: 1 1 auto; }
+
+  .kip__title { font-size: clamp(17px, 4vw, 22px); line-height: 1.3; }
+  .kip__sum   { margin-top: 0.4rem; font-size: clamp(15px, 3.4vw, 19px); line-height: 1.42; }
+  .kip__more  { margin-top: 0.45rem; font-size: clamp(15px, 3.4vw, 19px); gap: 7px; }
+  .kip__arrow { width: 17px; height: 12px; }
+
+  .kip__ask {
+    margin-top: 1.2rem;
+    padding-left: 0;
+    gap: 0.7rem;
+    font-size: clamp(16px, 3.6vw, 21px);
+    line-height: 1.42;
+  }
+  .kip__dia { width: 13px; height: 13px; margin-top: 0.35em; }
 }
