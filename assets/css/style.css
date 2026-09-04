@@ -1687,3 +1687,298 @@ img { display: block; max-width: 100%; height: auto; }
   }
   .kip__dia { width: 13px; height: 13px; margin-top: 0.35em; }
 }
+
+/* ==========================================================================
+   CONTACT PAGE  —  design of 2026-09-04
+   Same 1024 x 1536 portrait canvas as the Appointments and Who I Serve
+   designs, so it is built the same way: --u is one pixel of that canvas.
+
+   Scale: --s is 1. The check is not against the site's banner — that banner is
+   redrawn at a different scale in every one of her mockups, so it cannot settle
+   anything — but against HER OWN Who I Serve design, which is already built and
+   live at --s 1. Measured at the same ink threshold, the eight nav labels of
+   this design come out 0.973 to 1.000 of the Who I Serve design's, and the full
+   nav ink span 0.993 of it. Same canvas, same scale.
+
+   Type sizes are width-fits, solved as one least-squares system over 25
+   measured strings: one size per typographic group plus a single allowance for
+   how wide her drawing sets a word space. RMS residual 3.6px on a 1024px
+   canvas. The face is the condensed cut, the same choice as About,
+   Appointments and Who I Serve — her display serif is narrower than either cut
+   the site self-hosts, and matching the line LENGTHS is what keeps the
+   composition on her drawing.
+   ========================================================================== */
+.p-contact {
+  --s: 1;                                        /* composition scale on the 1448 canvas */
+  --u: calc(0.069061rem * var(--s));             /* 1 design px */
+  font-family: "DejaVu Serif Condensed", "DejaVu Serif", Georgia, serif;
+}
+/* the footer is a site-wide block drawn in the Home face — keep it there */
+.p-contact .foot { font-family: "DejaVu Serif", Georgia, "Times New Roman", serif; }
+
+.ct {
+  background: var(--cream-hi);
+  /* design: nav underline bottom y241 -> card top y307 = 66. The shared banner
+     already keeps 13.4px under its underline, so the padding carries the 53
+     that remain — the same 53 the Who I Serve page needed. */
+  padding-top: calc(var(--u) * 53);
+  padding-bottom: calc(var(--u) * 53);           /* card bottom y1163 -> footer y1216 */
+  color: var(--navy-ink);
+}
+
+.ct__card {
+  width: calc(var(--u) * 911);                   /* outer edges x57 -> x967 */
+  margin: 0 auto;
+  border: calc(var(--u) * 2.2) solid var(--gold);
+  border-radius: calc(var(--u) * 15);
+  padding: 0 0 calc(var(--u) * 27.8);            /* button bottom y1133 -> card inner bottom */
+}
+
+/* ---- the two centred lines at the top of the card ---- */
+.ct__title {
+  margin: calc(var(--u) * 32.9) 0 0;
+  font-size: calc(var(--u) * 51.6);              /* width-fit 353 */
+  line-height: calc(var(--u) * 60);
+  font-weight: 700;
+  text-align: center;
+}
+
+.ct__lede {
+  margin: calc(var(--u) * 15) 0 0;
+  font-size: calc(var(--u) * 26.2);              /* width-fit 563 / 462 */
+  line-height: calc(var(--u) * 39.2);            /* baselines y445.8 -> y485 */
+  text-align: center;
+}
+
+/* ==========================================================================
+   the two columns
+   ========================================================================== */
+.ct__cols {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  margin-top: calc(var(--u) * 53.1);
+  padding-left: calc(var(--u) * 34);             /* card inner edge x59 -> icon x93 */
+}
+
+/* the vertical gold rule between the columns: design x514, y528 -> y1135 */
+.ct__cols::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--u) * 455);                    /* x514 measured from the card's inner edge */
+  top: calc(var(--u) * -20.6);
+  width: calc(var(--u) * 1.2);
+  height: calc(var(--u) * 608);
+  background: var(--gold);
+}
+
+.ct__info {
+  flex: 0 0 calc(var(--u) * 421);                /* icon x93 -> rule x514 */
+  padding-top: calc(var(--u) * 5.4);             /* first icon sits at y554 */
+}
+
+.ct__form {
+  flex: 1 1 auto;
+  padding-left: calc(var(--u) * 28);             /* rule x514 -> field x542 */
+}
+
+/* ---- left column: four icon rows ---- */
+.ct__list { margin: 0; padding: 0; list-style: none; }
+
+.ct__row { display: flex; align-items: flex-start; }
+/* label baselines run on a strict 114.7 cadence (y586, 701, 816, 930). Her
+   fourth circle drifts 6px off that cadence; the cadence is what is regular in
+   the drawing, so the rows are set from it. */
+.ct__row + .ct__row { margin-top: calc(var(--u) * 39.3); }
+
+.ct__icon {
+  flex: 0 0 auto;
+  display: block;
+  width: calc(var(--u) * 68);
+  height: calc(var(--u) * 68);
+}
+.ct__icon .ring { fill: none; stroke: var(--gold); stroke-width: 2.2; }
+.ct__icon .solid { fill: var(--gold); }
+.ct__icon .line {
+  fill: none; stroke: var(--gold); stroke-width: 2.4;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+
+.ct__body { padding: calc(var(--u) * 11.75) 0 0 calc(var(--u) * 26); }  /* icon right x161 -> ink x187 */
+
+.ct__label {
+  margin: 0;
+  font-size: calc(var(--u) * 19.5);              /* width-fit over the four labels */
+  line-height: calc(var(--u) * 27);
+  font-weight: 700;
+}
+
+.ct__value {
+  margin: calc(var(--u) * 6.4) 0 0;
+  font-size: calc(var(--u) * 20);                /* width-fit over the address lines */
+  line-height: calc(var(--u) * 30.25);           /* baselines y1023 -> y1053 */
+}
+/* the phone number is drawn larger than the address lines, and the two long
+   web addresses smaller — she sized them to the column, and the column is the
+   same width here, so each keeps its own fit */
+.ct__value--tel   { font-size: calc(var(--u) * 22.2); }
+.ct__value--email { font-size: calc(var(--u) * 15);   }
+.ct__value--site  { font-size: calc(var(--u) * 16.4); }
+
+.ct__value a { color: inherit; text-decoration: none; }
+.ct__value a:hover, .ct__value a:focus-visible { text-decoration: underline; }
+
+/* ---- right column: heading, intro, form ---- */
+.ct__h2 {
+  margin: 0;
+  font-size: calc(var(--u) * 24.65);             /* width-fit 194 */
+  line-height: calc(var(--u) * 34);
+  font-weight: 700;
+}
+
+.ct__intro {
+  margin: calc(var(--u) * 7.8) 0 0;
+  font-size: calc(var(--u) * 20.76);             /* width-fit over the three lines */
+  line-height: calc(var(--u) * 31);              /* baselines y613 / y644 / y675 */
+}
+
+.ct__form form { margin: calc(var(--u) * 24.6) 0 0; }
+
+.ct__pair {
+  display: flex;
+  gap: calc(var(--u) * 17);                      /* x736 -> x753 */
+  width: calc(var(--u) * 404);
+  max-width: 100%;
+}
+.ct__pair > * { flex: 1 1 0; min-width: 0; }
+
+.ct__field {
+  display: block;
+  width: calc(var(--u) * 404);                   /* x542 -> x945 */
+  max-width: 100%;
+  height: calc(var(--u) * 56);
+  margin: 0;
+  padding: 0 calc(var(--u) * 18);                /* placeholder ink starts 18 in */
+  border: calc(var(--u) * 1.2) solid var(--gold);
+  border-radius: calc(var(--u) * 4);
+  background: transparent;
+  color: var(--navy-ink);
+  font-family: inherit;
+  font-size: calc(var(--u) * 17.3);              /* width-fit over the five placeholders */
+  line-height: calc(var(--u) * 53.6);
+}
+.ct__pair .ct__field { width: 100%; }
+/* direct children only — the two name fields sit side by side inside .ct__pair
+   and are adjacent siblings, so an unscoped rule would push the second one
+   down and stretch the row */
+.ct__form form > .ct__field + .ct__field,
+.ct__form form > .ct__pair + .ct__field { margin-top: calc(var(--u) * 16); }
+
+textarea.ct__field {
+  height: calc(var(--u) * 137);                  /* y923 -> y1059 */
+  padding-top: calc(var(--u) * 13);
+  line-height: calc(var(--u) * 27);
+  resize: vertical;
+}
+
+.ct__field::placeholder { color: var(--navy-ink); opacity: 1; }
+.ct__field:focus-visible { outline: calc(var(--u) * 2) solid var(--gold-lt); outline-offset: 1px; }
+
+.ct__send {
+  display: block;
+  width: calc(var(--u) * 404);
+  max-width: 100%;
+  height: calc(var(--u) * 56);
+  margin: calc(var(--u) * 16) 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: calc(var(--u) * 4);
+  background: var(--navy-ink);
+  color: var(--gold-lt);
+  font-family: inherit;
+  font-size: calc(var(--u) * 21.7);              /* width-fit 140 */
+  line-height: calc(var(--u) * 56);
+  cursor: pointer;
+}
+.ct__send:hover { background: #0a2947; }
+.ct__send:focus-visible { outline: calc(var(--u) * 2) solid var(--gold-lt); outline-offset: 2px; }
+
+/* the honeypot: a field no person can see, and no person will fill in */
+.ct__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* the message the handler sends the visitor back to */
+.ct__note {
+  margin: calc(var(--u) * 16) 0 0;
+  padding: calc(var(--u) * 12) calc(var(--u) * 16);
+  width: calc(var(--u) * 404);
+  max-width: 100%;
+  border: calc(var(--u) * 1.2) solid var(--gold);
+  border-radius: calc(var(--u) * 4);
+  font-size: calc(var(--u) * 18);
+  line-height: calc(var(--u) * 26);
+}
+.ct__note--bad { border-color: #a33; }
+
+/* ==========================================================================
+   Contact: tablet / mobile (< 1100px)
+   ========================================================================== */
+@media (max-width: 1099.98px) {
+  .p-contact { --u: 1px; }
+
+  .ct { padding: 1.9rem 1.1rem 2.6rem; }
+  .ct__card {
+    width: auto;
+    max-width: 40rem;
+    margin: 0 auto;
+    border-width: 2px;
+    border-radius: 14px;
+    padding: 0 1.35rem 1.8rem;
+  }
+
+  .ct__title { margin-top: 1.5rem; font-size: clamp(30px, 7vw, 44px); line-height: 1.2; }
+  .ct__lede  { margin-top: 0.7rem; font-size: clamp(17px, 3.8vw, 24px); line-height: 1.45; }
+  .ct__lede br { display: none; }
+
+  .ct__cols { display: block; margin-top: 1.7rem; padding-left: 0; }
+  .ct__cols::before { display: none; }
+  .ct__info { padding-top: 0; }
+
+  .ct__row + .ct__row { margin-top: 1.1rem; }
+  .ct__icon { width: clamp(38px, 8vw, 48px); height: clamp(38px, 8vw, 48px); }
+  .ct__body { padding: 0 0 0 0.85rem; }
+  .ct__label { font-size: clamp(17px, 3.6vw, 21px); line-height: 1.35; }
+  .ct__value,
+  .ct__value--tel,
+  .ct__value--email,
+  .ct__value--site {
+    margin-top: 0.15rem;
+    font-size: clamp(15px, 3.2vw, 18px);
+    line-height: 1.45;
+    /* the two long web addresses carry <wbr> hints, so they break between
+       words rather than mid-word; this is only the backstop */
+    overflow-wrap: break-word;
+  }
+
+  .ct__form { padding-left: 0; margin-top: 2rem; }
+  .ct__h2 { font-size: clamp(21px, 4.6vw, 27px); line-height: 1.3; }
+  .ct__intro { margin-top: 0.5rem; font-size: clamp(16px, 3.5vw, 20px); line-height: 1.45; }
+  .ct__intro br { display: none; }
+
+  .ct__form form { margin-top: 1.2rem; }
+  .ct__pair { display: block; }
+  .ct__field {
+    width: 100%;
+    height: 3rem;
+    padding: 0 0.85rem;
+    border-width: 1px;
+    font-size: 1rem;
+    line-height: 2.9rem;
+  }
+  .ct__form form > .ct__field + .ct__field,
+  .ct__form .ct__pair + .ct__field,
+  .ct__pair .ct__field + .ct__field { margin-top: 0.75rem; }
+  textarea.ct__field { height: 8rem; padding-top: 0.7rem; line-height: 1.45; }
+
+  .ct__send { width: 100%; height: 3rem; margin-top: 0.9rem; font-size: 1.15rem; line-height: 3rem; }
+  .ct__note { width: 100%; font-size: 0.95rem; line-height: 1.45; }
+}
