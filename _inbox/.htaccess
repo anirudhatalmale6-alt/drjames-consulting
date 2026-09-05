@@ -1,0 +1,9 @@
+# The enquiries written here are private. Nothing in this folder is ever
+# served over the web; the site reads them from disk, not over HTTP.
+<IfModule mod_authz_core.c>
+  Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+  Order allow,deny
+  Deny from all
+</IfModule>

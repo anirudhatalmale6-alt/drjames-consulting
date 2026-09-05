@@ -1594,8 +1594,11 @@ img { display: block; max-width: 100%; height: auto; }
   color: var(--gold-dk);
   text-decoration: none;
 }
-.kip__more:hover,
-.kip__more:focus-visible { text-decoration: underline; }
+/* only the real links get the hover underline — the four "Read Article" items
+   are spans until the articles themselves exist, and a span that underlines
+   under the pointer promises a destination it does not have */
+a.kip__more:hover,
+a.kip__more:focus-visible { text-decoration: underline; }
 
 .kip__arrow {
   display: block;
@@ -1620,6 +1623,16 @@ img { display: block; max-width: 100%; height: auto; }
   font-size: calc(var(--u) * 24.3);            /* width-fit over both lines */
   line-height: calc(var(--u) * 28);
 }
+
+/* the closing note points at the Contact page. It is drawn as plain text, so
+   it stays plain text to the pixel and only announces itself under the
+   pointer or the keyboard. */
+.kip__ask a {
+  color: inherit;
+  text-decoration: none;
+}
+.kip__ask a:hover,
+.kip__ask a:focus-visible { text-decoration: underline; }
 
 .kip__dia {
   flex: 0 0 auto;
@@ -1981,4 +1994,98 @@ textarea.ct__field {
 
   .ct__send { width: 100%; height: 3rem; margin-top: 0.9rem; font-size: 1.15rem; line-height: 3rem; }
   .ct__note { width: 100%; font-size: 0.95rem; line-height: 1.45; }
+}
+
+/* ==========================================================================
+   APPOINTMENT REQUEST  —  the destination of the "Complete the Form" button
+   on the Appointments page.
+
+   There is no separate design for this page, so it does not invent one: it
+   runs on the Contact page's card, border, field and button, which she drew
+   and approved. Only the parts a booking form needs that a message form does
+   not — the single centred column, the drop-downs and the two hint lines —
+   are added here. The page carries class "p-contact" for exactly that reason,
+   so every .ct rule and the whole Contact mobile block apply unchanged.
+   ========================================================================== */
+
+.bk {
+  width: calc(var(--u) * 620);
+  max-width: 100%;
+  margin: calc(var(--u) * 44) auto 0;
+}
+
+.bk__row + .bk__row { margin-top: calc(var(--u) * 16); }
+
+.bk__pair {
+  display: flex;
+  gap: calc(var(--u) * 17);
+}
+.bk__pair > * { flex: 1 1 0; min-width: 0; }
+
+/* the Contact field is drawn at a fixed 404 for its own column; here it fills
+   the single column it is given */
+.bk .ct__field,
+.bk .ct__send { width: 100%; }
+
+/* ---- drop-downs, matched to the drawn text field -------------------------
+   A native select cannot be given the field's border radius and gold on every
+   platform, so it is stripped and redrawn — including the chevron, which is a
+   background image rather than a glyph so it cannot fall back to a different
+   font. */
+.bk__select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: calc(var(--u) * 44);
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 9'%3E%3Cpath d='M1 1.2 7 7.2 13 1.2' fill='none' stroke='%23c2841e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right calc(var(--u) * 18) center;
+  background-size: calc(var(--u) * 14) auto;
+  cursor: pointer;
+}
+.bk__select option { color: var(--navy-ink); }
+
+/* ---- the two hint lines -------------------------------------------------- */
+.bk__hint {
+  margin: calc(var(--u) * 8) 0 0;
+  font-size: calc(var(--u) * 16.4);
+  line-height: calc(var(--u) * 24);
+}
+
+/* the hint is not a row, so the row that follows it would otherwise sit flush
+   against it while every other row keeps 16 */
+.bk__hint + .bk__row { margin-top: calc(var(--u) * 12); }
+
+.bk__req {
+  margin: calc(var(--u) * 18) 0 0;
+  font-size: calc(var(--u) * 16.4);
+  line-height: calc(var(--u) * 24);
+}
+
+/* a taller message box than the Contact page's — this one is the only place a
+   visitor describes the work */
+.bk textarea.ct__field { height: calc(var(--u) * 150); }
+
+/* ==========================================================================
+   Appointment request: tablet / mobile (< 1100px)
+   The Contact mobile block already resets --u to 1px and restyles the card,
+   the fields and the button; only the pieces added above need answering.
+   ========================================================================== */
+@media (max-width: 1099.98px) {
+  .bk { width: auto; margin-top: 1.4rem; }
+  .bk__row + .bk__row { margin-top: 0.75rem; }
+  .bk__pair { display: block; }
+  .bk__pair > * + * { margin-top: 0.75rem; }
+
+  .bk__select {
+    padding-right: 2.4rem;
+    background-position: right 0.85rem center;
+    background-size: 13px auto;
+  }
+
+  .bk__hint,
+  .bk__req { font-size: 0.9rem; line-height: 1.45; }
+  .bk__hint + .bk__row { margin-top: 0.55rem; }
+  .bk__req { margin-top: 0.9rem; }
+
+  .bk textarea.ct__field { height: 8.5rem; }
 }
