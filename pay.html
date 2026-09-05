@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pay Online | D. R. James Consulting, LLC</title>
+<meta name="description" content="Pay your invoice from D. R. James Consulting, LLC securely online, or request a payment link.">
+<link rel="preload" href="assets/fonts/dejavu-serif-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/dejavu-serif-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css?v=9">
+</head>
+<body class="p-brand p-contact p-pay">
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============ HEADER ============ -->
+<header class="hdr">
+  <div class="hdr__lockup">
+    <img class="hdr__emblem" src="assets/img/emblem-act.png" alt="D. R. James Consulting emblem">
+    <div class="hdr__titles">
+      <h1 class="hdr__name">D. R. James Consulting, LLC</h1>
+      <p class="hdr__sub">Microbusiness Accounting and Tax Services</p>
+      <span class="rule rule--bot"><span class="gem"></span></span>
+    </div>
+  </div>
+
+  <nav class="hdr__nav" aria-label="Primary">
+    <button class="navtoggle" aria-expanded="false" aria-controls="navmenu" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="navmenu" id="navmenu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="who-i-serve.html">Who I Serve</a></li>
+      <li><a href="knowledge-is-power.html">Knowledge Is Power</a></li>
+      <li><a href="appointments.html">Book Appointment</a></li>
+      <li><a href="pay.html" class="is-active" aria-current="page">Pay Online</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ============ PAY ONLINE ============ -->
+<main id="main">
+<section class="ct">
+  <div class="ct__card">
+
+    <h2 class="ct__title">Pay Online</h2>
+    <p class="ct__lede">Settle your invoice securely, <br>whichever way suits you best.</p>
+
+    <div class="pay">
+
+      <ul class="pay__ways">
+
+        <li class="pay__way">
+          <span class="pay__ic">
+            <svg viewBox="0 0 68 68" aria-hidden="true">
+              <circle class="ring" cx="34" cy="34" r="32.9"/>
+              <rect class="solid" x="15.5" y="21" width="37" height="26" rx="3"/>
+              <rect x="15.5" y="27.5" width="37" height="5.5" fill="#faf8f4"/>
+              <rect x="20" y="38" width="12" height="3.4" rx="1.7" fill="#faf8f4"/>
+            </svg>
+          </span>
+          <div>
+            <h3 class="pay__h">Debit or Credit Card</h3>
+            <p class="pay__p">Every invoice I send carries its own secure payment link. Your card details are entered on the payment processor&rsquo;s page, not on this website, and I never see or store them.</p>
+          </div>
+        </li>
+
+        <li class="pay__way">
+          <span class="pay__ic">
+            <svg viewBox="0 0 68 68" aria-hidden="true">
+              <circle class="ring" cx="34" cy="34" r="32.9"/>
+              <path class="solid" d="M25 18h13.5c6.6 0 10.5 3.4 9.6 9.3-.9 6.1-5.4 9.4-12 9.4h-5.4L28.9 48H21z"/>
+              <path class="cut" d="M29.6 36.7h5.2"/>
+              <path class="line" d="M33.5 31.2 31.9 41"/>
+            </svg>
+          </span>
+          <div>
+            <h3 class="pay__h">PayPal</h3>
+            <p class="pay__p">If you would rather pay through PayPal, say so when you request your payment link and I will send a PayPal invoice instead.</p>
+          </div>
+        </li>
+
+        <li class="pay__way">
+          <span class="pay__ic">
+            <svg viewBox="0 0 68 68" aria-hidden="true">
+              <circle class="ring" cx="34" cy="34" r="32.9"/>
+              <rect class="line" x="15" y="23" width="38" height="22" rx="2.5"/>
+              <path class="line" d="M20.5 30.5h13M20.5 36h8"/>
+              <path class="line" d="M37 40.5c1.8-4.5 3.6-4.5 4.8 0 1.2 3.6 3 2.7 4.8-1.8"/>
+            </svg>
+          </span>
+          <div>
+            <h3 class="pay__h">Check or Bank Transfer</h3>
+            <p class="pay__p">Prefer to pay by check or straight from your bank? Ask when you request your link and I will send you the details.</p>
+          </div>
+        </li>
+
+      </ul>
+
+      <p class="pay__safe">Payments are handled by the payment processor, over an encrypted connection. No card or bank details are ever entered on this site.</p>
+
+      <div class="bk">
+        <form action="pay.php" method="post" novalidate>
+
+          <p class="bk__sub bk__sub--first">Request a Payment Link</p>
+          <p class="bk__hint">Don&rsquo;t have your invoice to hand, or want to pay before one is issued? Fill this in and I&rsquo;ll send you a payment link.</p>
+
+          <div class="bk__row bk__pair">
+            <input class="ct__field" type="text" name="first" placeholder="First Name" autocomplete="given-name" aria-label="First Name" maxlength="80">
+            <input class="ct__field" type="text" name="last" placeholder="Last Name" autocomplete="family-name" aria-label="Last Name" maxlength="80">
+          </div>
+
+          <div class="bk__row bk__pair">
+            <input class="ct__field" type="email" name="email" placeholder="Email Address" autocomplete="email" aria-label="Email Address" maxlength="150">
+            <input class="ct__field" type="tel" name="phone" placeholder="Phone Number" autocomplete="tel" aria-label="Phone Number" maxlength="40">
+          </div>
+
+          <div class="bk__row">
+            <input class="ct__field" type="text" name="business" placeholder="Business Name (if you have one)" autocomplete="organization" aria-label="Business Name" maxlength="120">
+          </div>
+
+          <div class="bk__row bk__pair">
+            <input class="ct__field" type="text" name="invoice" placeholder="Invoice Number (if you have it)" aria-label="Invoice Number" maxlength="60">
+            <input class="ct__field" type="text" name="amount" placeholder="Amount (if you know it)" aria-label="Amount" maxlength="40">
+          </div>
+
+          <div class="bk__row">
+            <select class="ct__field bk__select" name="method" aria-label="How would you like to pay?">
+              <option value="">How would you like to pay?</option>
+              <option>Debit or credit card</option>
+              <option>PayPal</option>
+              <option>Check</option>
+              <option>Bank transfer</option>
+              <option>Whichever is easiest</option>
+            </select>
+          </div>
+
+          <div class="bk__row">
+            <textarea class="ct__field" name="message" placeholder="What is the payment for?" aria-label="What is the payment for?" maxlength="4000"></textarea>
+          </div>
+
+          <!-- left empty by people, filled in by robots -->
+          <div class="ct__hp" aria-hidden="true">
+            <label>Company website <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+          </div>
+
+          <button class="ct__send" type="submit">Send Request</button>
+
+          <p class="ct__note" id="ctnote" hidden></p>
+
+          <p class="bk__req">I read every request myself and reply personally. If you would rather sort it out on the phone, call 216-314-2464.</p>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot foot--home">
+  <p class="foot__quote"><span class="foot__q">&ldquo;</span>Organized records. Clear numbers. Confident decisions.<span class="foot__q">&rdquo;</span></p>
+
+  <div class="foot__in">
+    <div class="foot__person">
+      <p class="foot__name">Desiree R. James, MBA</p>
+      <p class="foot__creds">Accountant<br>
+        Master of Accountancy Candidate 2027<br>
+        Insured<br>
+        Intuit Tax &amp; QuickBooks Certified</p>
+    </div>
+
+    <div class="foot__right">
+      <p class="foot__services"><span>Tax Preparation</span> <i>|</i> <span>Bookkeeping</span> <i>|</i> <span>Micro Business Support</span></p>
+
+      <div class="foot__contact">
+        <div class="foot__stack">
+          <a class="foot__ci" href="https://microbusinessaccountingservices.com">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3.5 9h17M3.5 15h17"/></svg>
+            <span>microbusinessaccountingservices.com</span>
+          </a>
+          <a class="foot__ci" href="mailto:info@microbusinessaccountingservices.com">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="1.5"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>
+            <span>info@microbusinessaccountingservices.com</span>
+          </a>
+        </div>
+
+        <a class="foot__ci" href="tel:+12163142464">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5c1 0 1.6.5 2 1.6l.9 2.4c.3.9.1 1.5-.6 2l-1 .8c.9 2 2.4 3.6 4.4 4.6l.8-1c.5-.7 1.1-.9 2-.6l2.4.9c1.1.4 1.6 1 1.6 2v1.9c0 1.3-.9 2.2-2.3 2.1C9.6 19.6 4.4 14.4 3.6 5.8 3.5 4.4 4.4 3.5 5.7 3.5z"/></svg>
+          <span>216-314-2464</span>
+        </a>
+
+        <span class="foot__ci">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8c3.5 0 6.3 2.8 6.3 6.3 0 4.6-6.3 12.1-6.3 12.1S5.7 13.7 5.7 9.1C5.7 5.6 8.5 2.8 12 2.8z"/><circle cx="12" cy="9.1" r="2.4"/></svg>
+          <span>Cleveland, Ohio</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <p class="foot__copy">&copy; D. R. James Consulting, LLC. All Rights Reserved.</p>
+</footer>
+
+<script>
+  var t = document.querySelector('.navtoggle'), m = document.getElementById('navmenu');
+  t.addEventListener('click', function () {
+    var open = m.classList.toggle('is-open');
+    t.setAttribute('aria-expanded', open);
+  });
+
+  /* the handler sends the visitor back here with ?sent=1 or ?sent=0&why=... */
+  (function () {
+    var q = new URLSearchParams(location.search), s = q.get('sent');
+    if (s === null) return;
+    var why = {
+      name:    'Please tell me your name so I know who I am speaking to.',
+      email:   'That email address does not look right — please check it and try again.',
+      contact: 'Please give me either an email address or a phone number so I can send the link to you.',
+      send:    'The request could not be sent just now. Please call 216-314-2464 and I will take care of it straight away.'
+    };
+    var n = document.getElementById('ctnote');
+    n.textContent = s === '1'
+      ? 'Thank you — your request has been received. I will send your payment link shortly.'
+      : (why[q.get('why')] || why.send);
+    n.classList.toggle('ct__note--bad', s !== '1');
+    n.hidden = false;
+    history.replaceState(null, '', location.pathname);
+    n.scrollIntoView({block: 'center'});
+  })();
+</script>
+</body>
+</html>

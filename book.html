@@ -7,7 +7,7 @@
 <meta name="description" content="Request your free 15-minute consultation with D. R. James Consulting, LLC. Tell me about your business and your preferred day and time, and I will be in touch to confirm.">
 <link rel="preload" href="assets/fonts/dejavu-serif-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/dejavu-serif-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/style.css?v=8">
+<link rel="stylesheet" href="assets/css/style.css?v=9">
 </head>
 <body class="p-brand p-contact p-book">
 
@@ -35,7 +35,7 @@
       <li><a href="who-i-serve.html">Who I Serve</a></li>
       <li><a href="knowledge-is-power.html">Knowledge Is Power</a></li>
       <li><a href="appointments.html" class="is-active" aria-current="page">Book Appointment</a></li>
-      <li><a href="#">Pay Online</a></li>
+      <li><a href="pay.html">Pay Online</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
@@ -52,6 +52,8 @@
     <div class="bk">
       <form action="book.php" method="post" novalidate>
 
+        <p class="bk__sub bk__sub--first">Your Details</p>
+
         <div class="bk__row bk__pair">
           <input class="ct__field" type="text" name="first" placeholder="First Name" autocomplete="given-name" aria-label="First Name" maxlength="80">
           <input class="ct__field" type="text" name="last" placeholder="Last Name" autocomplete="family-name" aria-label="Last Name" maxlength="80">
@@ -66,6 +68,9 @@
           <input class="ct__field" type="text" name="business" placeholder="Business Name (if you have one)" autocomplete="organization" aria-label="Business Name" maxlength="120">
         </div>
 
+        <p class="bk__sub">A Few Quick Questions</p>
+        <p class="bk__hint">Answer what you can &mdash; all of these are optional, and &ldquo;not sure&rdquo; is a perfectly good answer. It just means we spend our fifteen minutes on your business instead of on paperwork.</p>
+
         <div class="bk__row">
           <select class="ct__field bk__select" name="need" aria-label="What do you need help with?">
             <option value="">What do you need help with?</option>
@@ -77,6 +82,79 @@
             <option>Something else &mdash; I&rsquo;ll explain below</option>
           </select>
         </div>
+
+        <div class="bk__row bk__pair">
+          <select class="ct__field bk__select" name="entity" aria-label="How is the business set up?">
+            <option value="">How is the business set up?</option>
+            <option>Sole Proprietor</option>
+            <option>Single-Member LLC</option>
+            <option>Multi-Member LLC</option>
+            <option>Partnership</option>
+            <option>S Corporation</option>
+            <option>C Corporation</option>
+            <option>Not formed yet</option>
+            <option>Not sure</option>
+          </select>
+          <select class="ct__field bk__select" name="years" aria-label="How long have you been in business?">
+            <option value="">How long in business?</option>
+            <option>Not started yet</option>
+            <option>Less than a year</option>
+            <option>1 to 3 years</option>
+            <option>3 to 5 years</option>
+            <option>More than 5 years</option>
+          </select>
+        </div>
+
+        <div class="bk__row bk__pair">
+          <select class="ct__field bk__select" name="books" aria-label="How are your books kept now?">
+            <option value="">How are your books kept now?</option>
+            <option>QuickBooks Online</option>
+            <option>QuickBooks Desktop</option>
+            <option>Another accounting software</option>
+            <option>Spreadsheets</option>
+            <option>Paper records</option>
+            <option>Receipts, but nothing recorded yet</option>
+            <option>Nothing yet</option>
+          </select>
+          <select class="ct__field bk__select" name="current" aria-label="How current are your books?">
+            <option value="">How current are your books?</option>
+            <option>Up to date</option>
+            <option>A month or two behind</option>
+            <option>Several months behind</option>
+            <option>A year or more behind</option>
+            <option>Not sure</option>
+          </select>
+        </div>
+
+        <div class="bk__row bk__pair">
+          <select class="ct__field bk__select" name="helpers" aria-label="Do you pay employees or contractors?">
+            <option value="">Do you pay anyone?</option>
+            <option>No, it&rsquo;s just me</option>
+            <option>Contractors only</option>
+            <option>Employees on payroll</option>
+            <option>Both employees and contractors</option>
+          </select>
+          <select class="ct__field bk__select" name="filings" aria-label="Where do your tax filings stand?">
+            <option value="">Where do tax filings stand?</option>
+            <option>Filed and up to date</option>
+            <option>One year outstanding</option>
+            <option>Two or more years outstanding</option>
+            <option>First year in business</option>
+            <option>Not sure</option>
+          </select>
+        </div>
+
+        <div class="bk__row">
+          <select class="ct__field bk__select" name="urgency" aria-label="How soon would you like to start?">
+            <option value="">How soon would you like to start?</option>
+            <option>As soon as possible</option>
+            <option>Within the next month</option>
+            <option>Within the next three months</option>
+            <option>Just exploring for now</option>
+          </select>
+        </div>
+
+        <p class="bk__sub">When Suits You</p>
 
         <div class="bk__row bk__pair">
           <input class="ct__field" type="text" name="day" placeholder="Preferred Day" aria-label="Preferred Day" maxlength="80">

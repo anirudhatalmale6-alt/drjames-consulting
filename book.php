@@ -38,6 +38,30 @@ $time     = field('time');
 $via      = field('via');
 $message  = trim((string)($_POST['message'] ?? ''));
 
+/* ---- the short assessment ----------------------------------------------
+   Seven questions, so the free fifteen minutes is spent on the business
+   rather than on collecting facts that could have been collected here.
+   Every one of them is OPTIONAL on purpose: a caller who does not know how
+   far behind their books are must still be able to ask for an appointment,
+   and "not sure" is itself a useful answer. */
+$ASSESS = [
+    'entity'  => 'Structure',
+    'years'   => 'Trading',
+    'books'   => 'Books in',
+    'current' => 'Books are',
+    'helpers' => 'Pays others',
+    'filings' => 'Tax filings',
+    'urgency' => 'Wants to start',
+];
+$assess = [];
+foreach ($ASSESS as $k => $label) {
+    $v = field($k);
+    if (mb_strlen($v) > 90) {
+        back(PAGE, '0', 'send');
+    }
+    $assess[$label] = $v;
+}
+
 $name = trim($first . ' ' . $last);
 
 if ($name === '') {
@@ -74,8 +98,21 @@ $body = "An appointment was requested from the website.\n\n"
       . "Needs help:  " . ($need     !== '' ? $need     : $blank) . "\n"
       . "Preferred:   " . trim(($day !== '' ? $day : 'any day') . ', '
                              . ($time !== '' ? $time : 'any time')) . " (Eastern)\n"
-      . "Received:    " . gmdate('Y-m-d H:i:s') . " UTC\n"
-      . str_repeat('-', 60) . "\n\n"
+      . "Received:    " . gmdate('Y-m-d H:i:s') . " UTC\n";
+
+/* the assessment, printed only where it was answered — a wall of "(not
+   given)" makes the answers that ARE there harder to find */
+$answered = array_filter($assess, static function ($v) { return $v !== ''; });
+if ($answered) {
+    $body .= "\nAssessment\n";
+    foreach ($answered as $label => $v) {
+        $body .= "  " . str_pad($label . ':', 16) . $v . "\n";
+    }
+} else {
+    $body .= "\nAssessment:  (none of it answered)\n";
+}
+
+$body .= str_repeat('-', 60) . "\n\n"
       . ($message !== '' ? $message : '(no note left)') . "\n";
 
 // on disk first: this, not mail(), is what makes the request received

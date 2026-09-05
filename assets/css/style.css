@@ -1702,6 +1702,229 @@ a.kip__more:focus-visible { text-decoration: underline; }
 }
 
 /* ==========================================================================
+   ARTICLE PAGES  —  the four destinations of "Read Article" on the
+   Knowledge Is Power page.
+
+   There is no design for an article page, so this one does not invent a look:
+   it is the Knowledge Is Power page's own frame — the same cream field, the
+   same gold rule with its gem, the same condensed serif — with a reading
+   column set narrower than the index column, because a 957px measure at 22px
+   runs past ninety characters a line and stops being readable.
+
+   Scale is the Knowledge Is Power scale: --s 1 on the 1448 canvas, so one
+   design pixel is one CSS pixel there, exactly as on the page these link from.
+   ========================================================================== */
+.p-article {
+  --s: 1;
+  --u: calc(0.069061rem * var(--s));           /* 1 design px */
+  /* the same darkened gold the Knowledge Is Power page uses for link text —
+     the rule gold drops to 3:1 on cream, which is under the readable threshold */
+  --gold-dk: #8a4a12;
+  font-family: "DejaVu Serif Condensed", "DejaVu Serif", Georgia, serif;
+}
+/* the footer is a site-wide block drawn in the Home face — keep it there */
+.p-article .foot { font-family: "DejaVu Serif", Georgia, "Times New Roman", serif; }
+
+.art {
+  background: var(--cream-hi);
+  color: var(--navy-ink);
+  /* the same 36 the Knowledge Is Power page keeps under the nav underline */
+  padding-top: calc(var(--u) * 36);
+  padding-bottom: calc(var(--u) * 46);
+}
+
+.art__in {
+  width: calc(var(--u) * 790);                 /* ~68 characters a line at 21.5 */
+  margin: 0 auto;
+}
+
+/* ---- the line back to the index, above the title ---- */
+.art__up {
+  margin: 0;
+  font-size: calc(var(--u) * 18.5);
+  line-height: calc(var(--u) * 26);
+  text-align: center;
+  letter-spacing: calc(var(--u) * 0.6);
+}
+.art__up a {
+  color: var(--gold-dk);
+  text-decoration: none;
+}
+.art__up a:hover,
+.art__up a:focus-visible { text-decoration: underline; }
+
+/* ---- title ---- */
+.art__title {
+  margin: calc(var(--u) * 14) 0 0;
+  font-size: calc(var(--u) * 41);
+  line-height: calc(var(--u) * 50);
+  font-weight: 700;
+  text-align: center;
+}
+
+.p-article .rule--art {
+  display: block;
+  position: relative;
+  width: calc(var(--u) * 320);
+  height: calc(var(--u) * 2);
+  margin: calc(var(--u) * 22) auto 0;
+  background: var(--gold);
+}
+.p-article .rule--art .gem {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(var(--u) * 16);
+  height: calc(var(--u) * 16);
+  margin: 0;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: var(--gold);
+}
+
+/* ---- the standfirst under the rule ---- */
+.art__lede {
+  margin: calc(var(--u) * 26) 0 0;
+  font-size: calc(var(--u) * 24);
+  line-height: calc(var(--u) * 36);
+  text-align: center;
+  font-style: italic;
+}
+
+/* ==========================================================================
+   the body
+   ========================================================================== */
+.art__body { margin-top: calc(var(--u) * 34); }
+
+.art__body p {
+  margin: 0;
+  font-size: calc(var(--u) * 21.5);
+  line-height: calc(var(--u) * 34);
+}
+.art__body p + p,
+/* a paragraph that closes a list needs the same air as one that follows a
+   paragraph — without this it sits flush against the last bullet */
+.art__body ul + p { margin-top: calc(var(--u) * 17); }
+
+.art__body h3 {
+  margin: calc(var(--u) * 34) 0 calc(var(--u) * 12);
+  font-size: calc(var(--u) * 27);
+  line-height: calc(var(--u) * 34);
+  font-weight: 700;
+}
+
+.art__body ul {
+  margin: calc(var(--u) * 14) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.art__body li {
+  position: relative;
+  padding-left: calc(var(--u) * 26);
+  font-size: calc(var(--u) * 21.5);
+  line-height: calc(var(--u) * 32);
+}
+.art__body li + li { margin-top: calc(var(--u) * 10); }
+/* the same small gold lozenge the Knowledge Is Power page sets beside its
+   closing note, so a list here reads as part of the same family */
+.art__body li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(var(--u) * 12);
+  width: calc(var(--u) * 9);
+  height: calc(var(--u) * 9);
+  transform: rotate(45deg);
+  background: var(--gold);
+}
+
+.art__body strong { font-weight: 700; }
+
+/* ==========================================================================
+   the closing invitation
+   ========================================================================== */
+.art__cta {
+  margin-top: calc(var(--u) * 40);
+  border: calc(var(--u) * 2.2) solid var(--gold);
+  border-radius: calc(var(--u) * 15);
+  padding: calc(var(--u) * 26) calc(var(--u) * 30) calc(var(--u) * 28);
+  text-align: center;
+}
+.art__cta p {
+  margin: 0;
+  font-size: calc(var(--u) * 22);
+  line-height: calc(var(--u) * 32);
+}
+.art__cta .art__btn {
+  display: inline-block;
+  margin-top: calc(var(--u) * 18);
+  padding: 0 calc(var(--u) * 30);
+  height: calc(var(--u) * 48);
+  border-radius: calc(var(--u) * 24);
+  background: var(--navy-ink);
+  color: var(--cream-hi);
+  font-size: calc(var(--u) * 21);
+  line-height: calc(var(--u) * 48);
+  text-decoration: none;
+}
+.art__cta .art__btn:hover { background: #0a2947; }
+.art__cta .art__btn:focus-visible { outline: calc(var(--u) * 2) solid var(--gold-lt); outline-offset: 2px; }
+
+/* the one line that says what this page is and is not. It is set quieter than
+   the body but not so quiet that it stops being readable on the cream. */
+.art__note {
+  margin: calc(var(--u) * 26) 0 0;
+  font-size: calc(var(--u) * 17.5);
+  line-height: calc(var(--u) * 26);
+  text-align: center;
+  color: #4a5765;
+}
+
+.art__back {
+  margin: calc(var(--u) * 26) 0 0;
+  font-size: calc(var(--u) * 20);
+  line-height: calc(var(--u) * 28);
+  text-align: center;
+}
+.art__back a { color: var(--gold-dk); text-decoration: none; }
+.art__back a:hover,
+.art__back a:focus-visible { text-decoration: underline; }
+
+/* ==========================================================================
+   Article: tablet / mobile (< 1100px)
+   ========================================================================== */
+@media (max-width: 1099.98px) {
+  .p-article { --u: 1px; }
+
+  .art { padding: 1.6rem 1.1rem 2.2rem; }
+  .art__in { width: auto; max-width: 40rem; }
+
+  .art__up { font-size: 0.95rem; line-height: 1.4; }
+  .art__title { margin-top: 0.6rem; font-size: clamp(24px, 6vw, 34px); line-height: 1.22; }
+  .p-article .rule--art { width: min(260px, 70%); height: 2px; margin-top: 1rem; }
+  .p-article .rule--art .gem { width: 14px; height: 14px; }
+
+  .art__lede { margin-top: 1rem; font-size: clamp(16px, 3.8vw, 21px); line-height: 1.45; }
+
+  .art__body { margin-top: 1.4rem; }
+  .art__body p,
+  .art__body li { font-size: clamp(16px, 3.6vw, 19px); line-height: 1.55; }
+  .art__body p + p,
+  .art__body ul + p { margin-top: 0.8rem; }
+  .art__body h3 { margin: 1.5rem 0 0.5rem; font-size: clamp(18px, 4.4vw, 23px); line-height: 1.3; }
+  .art__body ul { margin-top: 0.7rem; }
+  .art__body li { padding-left: 1.25rem; }
+  .art__body li + li { margin-top: 0.5rem; }
+  .art__body li::before { top: 0.55em; width: 8px; height: 8px; }
+
+  .art__cta { margin-top: 1.8rem; border-width: 2px; border-radius: 12px; padding: 1.2rem 1rem 1.3rem; }
+  .art__cta p { font-size: clamp(16px, 3.6vw, 20px); line-height: 1.45; }
+  .art__cta .art__btn { margin-top: 0.9rem; height: 2.9rem; line-height: 2.9rem; padding: 0 1.4rem; font-size: 1.05rem; border-radius: 1.45rem; }
+
+  .art__note { margin-top: 1.2rem; font-size: 0.88rem; line-height: 1.45; }
+  .art__back { margin-top: 1.2rem; font-size: 1rem; }
+}
+
+/* ==========================================================================
    CONTACT PAGE  —  design of 2026-09-04
    Same 1024 x 1536 portrait canvas as the Appointments and Who I Serve
    designs, so it is built the same way: --u is one pixel of that canvas.
@@ -2016,11 +2239,17 @@ textarea.ct__field {
 
 .bk__row + .bk__row { margin-top: calc(var(--u) * 16); }
 
+/* Grid, not flex, and the reason matters: flex-basis 0 resolves against the
+   CONTENT box, so a drop-down (which carries 44 of right padding for its
+   chevron) came out 26px wider than the text field beside it and the pair sat
+   visibly off-centre. Grid columns are sized before padding is considered, so
+   1fr and 1fr are equal whatever each control carries inside it. */
 .bk__pair {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: calc(var(--u) * 17);
 }
-.bk__pair > * { flex: 1 1 0; min-width: 0; }
+.bk__pair > * { min-width: 0; }
 
 /* the Contact field is drawn at a fixed 404 for its own column; here it fills
    the single column it is given */
@@ -2043,6 +2272,26 @@ textarea.ct__field {
   cursor: pointer;
 }
 .bk__select option { color: var(--navy-ink); }
+
+/* ---- section headings ----------------------------------------------------
+   The form is long enough to need signposts. They are set on the card's own
+   gold rather than on a new colour, and the hairline under each one is the
+   same 2.2 the card border uses, at a third of the opacity so it separates
+   without competing with the border it sits inside. */
+.bk__sub {
+  margin: calc(var(--u) * 30) 0 0;
+  padding-bottom: calc(var(--u) * 7);
+  border-bottom: calc(var(--u) * 1.6) solid rgba(194, 132, 30, 0.45);
+  font-size: calc(var(--u) * 21);
+  line-height: calc(var(--u) * 28);
+  font-weight: 700;
+  letter-spacing: calc(var(--u) * 0.4);
+}
+.bk__sub--first { margin-top: 0; }
+
+/* a heading is not a row either, so it carries the gap to whatever follows it */
+.bk__sub + .bk__row { margin-top: calc(var(--u) * 16); }
+.bk__sub + .bk__hint { margin-top: calc(var(--u) * 10); }
 
 /* ---- the two hint lines -------------------------------------------------- */
 .bk__hint {
@@ -2082,10 +2331,130 @@ textarea.ct__field {
     background-size: 13px auto;
   }
 
+  .bk__sub {
+    margin-top: 1.5rem;
+    padding-bottom: 0.35rem;
+    border-bottom-width: 2px;
+    font-size: 1.05rem;
+    line-height: 1.35;
+  }
+  .bk__sub--first { margin-top: 0; }
+  .bk__sub + .bk__row  { margin-top: 0.75rem; }
+  .bk__sub + .bk__hint { margin-top: 0.5rem; }
+
   .bk__hint,
   .bk__req { font-size: 0.9rem; line-height: 1.45; }
   .bk__hint + .bk__row { margin-top: 0.55rem; }
   .bk__req { margin-top: 0.9rem; }
 
   .bk textarea.ct__field { height: 8.5rem; }
+}
+
+/* ==========================================================================
+   PAY ONLINE  —  the destination of the "Pay Online" menu item and of the
+   "Make a Payment" button on the home page.
+
+   No design exists for this page either, so like the appointment form it does
+   not invent one: it carries class "p-contact" and runs on the Contact card,
+   fields and button she drew and approved, and on the section headings the
+   appointment form already uses. Only the list of ways to pay is new here.
+   ========================================================================== */
+
+.pay { width: calc(var(--u) * 700); max-width: 100%; margin: calc(var(--u) * 40) auto 0; }
+
+.pay__ways { margin: 0; padding: 0; list-style: none; }
+
+.pay__way {
+  display: flex;
+  align-items: flex-start;
+  gap: calc(var(--u) * 20);
+}
+.pay__way + .pay__way { margin-top: calc(var(--u) * 22); }
+
+.pay__ic {
+  flex: 0 0 auto;
+  width: calc(var(--u) * 54);
+  height: calc(var(--u) * 54);
+}
+.pay__ic svg { display: block; width: 100%; height: 100%; }
+.pay__ic .ring { fill: none; stroke: var(--gold); stroke-width: 2.2; }
+.pay__ic .solid { fill: var(--navy-ink); }
+.pay__ic .line {
+  fill: none;
+  stroke: var(--navy-ink);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.pay__ic .cut { fill: none; stroke: var(--cream-hi); stroke-width: 2.6; }
+
+.pay__h {
+  margin: calc(var(--u) * 2) 0 0;
+  font-size: calc(var(--u) * 23);
+  line-height: calc(var(--u) * 30);
+  font-weight: 700;
+}
+.pay__p {
+  margin: calc(var(--u) * 5) 0 0;
+  font-size: calc(var(--u) * 19.5);
+  line-height: calc(var(--u) * 29);
+}
+
+/* the button a way to pay gets once its link exists. Written now so that
+   turning a method on later is one anchor, not a new stylesheet. */
+.pay__btn {
+  display: inline-block;
+  margin-top: calc(var(--u) * 11);
+  padding: 0 calc(var(--u) * 26);
+  height: calc(var(--u) * 42);
+  border-radius: calc(var(--u) * 21);
+  background: var(--navy-ink);
+  color: var(--cream-hi);
+  font-size: calc(var(--u) * 19);
+  line-height: calc(var(--u) * 42);
+  text-decoration: none;
+}
+.pay__btn:hover { background: #0a2947; }
+.pay__btn:focus-visible { outline: calc(var(--u) * 2) solid var(--gold-lt); outline-offset: 2px; }
+
+/* the reassurance line under the list */
+.pay__safe {
+  margin: calc(var(--u) * 24) 0 0;
+  font-size: calc(var(--u) * 18);
+  line-height: calc(var(--u) * 27);
+  text-align: center;
+  color: #4a5765;
+}
+
+/* the request form sits in the same column as the ways to pay */
+.pay .bk { width: 100%; margin-top: calc(var(--u) * 34); }
+
+/* ==========================================================================
+   Pay Online: tablet / mobile (< 1100px)
+   The Contact mobile block already resets --u and restyles card, fields and
+   button; only what is added above needs answering.
+   ========================================================================== */
+@media (max-width: 1099.98px) {
+  .pay { width: auto; margin-top: 1.3rem; }
+
+  .pay__way { gap: 0.85rem; }
+  .pay__way + .pay__way { margin-top: 1.1rem; }
+
+  .pay__ic { width: clamp(40px, 11vw, 52px); height: clamp(40px, 11vw, 52px); }
+
+  .pay__h { font-size: clamp(17px, 4vw, 21px); line-height: 1.3; }
+  .pay__p { margin-top: 0.25rem; font-size: clamp(15px, 3.4vw, 18px); line-height: 1.45; }
+
+  .pay__btn {
+    margin-top: 0.6rem;
+    height: 2.7rem;
+    line-height: 2.7rem;
+    padding: 0 1.2rem;
+    border-radius: 1.35rem;
+    font-size: 1rem;
+  }
+
+  .pay__safe { margin-top: 1.1rem; font-size: 0.88rem; line-height: 1.45; }
+
+  .pay .bk { margin-top: 1.4rem; }
 }
