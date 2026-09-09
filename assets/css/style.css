@@ -2351,110 +2351,312 @@ textarea.ct__field {
 }
 
 /* ==========================================================================
-   PAY ONLINE  —  the destination of the "Pay Online" menu item and of the
-   "Make a Payment" button on the home page.
+   PAY ONLINE PAGE  —  design of 2026-09-08
 
-   No design exists for this page either, so like the appointment form it does
-   not invent one: it carries class "p-contact" and runs on the Contact card,
-   fields and button she drew and approved, and on the section headings the
-   appointment form already uses. Only the list of ways to pay is new here.
+   Same 1024 x 1536 portrait canvas as the Appointments, Who I Serve and
+   Contact designs, so it is built the same way: --u is one pixel of that
+   canvas and --s is 1.
+
+   Scale check, as always, against a design of HERS that is already built and
+   accepted rather than against the banner (which she redraws at a different
+   size in every mockup): the nav ink of this drawing spans 965px against the
+   Contact drawing's 959 — 1.006 — on the same canvas. Same scale.
+
+   The drawing redraws the shared banner larger and bluer than the site, and
+   names the menu item "Appointments" where the site says "Book Appointment".
+   Both are shared-block drift, and her standing rule is that the site wins
+   there, so the banner and the menu are untouched. Everything below the
+   banner is anchored to the NAV UNDERLINE, not to the drawing's absolute y.
+
+   Type is fitted by WIDTH over 22 measured strings, one size per group. The
+   four cards' body text solved to 20.24-21.70 across thirteen separate lines,
+   which is what a single fitted 21 looks like when the drawing is consistent.
+
+   Where this drawing differs from the site's type: her display face is much
+   NARROWER than either cut this site self-hosts. "Pay Online" is 392 wide and
+   93 tall in her drawing; the condensed cut needs 517 to stand 93 tall. Every
+   size here is therefore fitted by WIDTH, exactly as on the five pages already
+   built and accepted, so every line starts and ends where she drew it and the
+   blocks either side of it land on her coordinates. The cost is that the two
+   display lines - the title and "PAYMENT OPTIONS" - read a little shorter than
+   she drew them. Fitting their height instead would have moved the rules and
+   the cards off her layout, which is the more visible error of the two.
    ========================================================================== */
+.p-pay {
+  --s: 1;                                        /* composition scale on the 1448 canvas */
+  --u: calc(0.069061rem * var(--s));             /* 1 design px */
+  font-family: "DejaVu Serif Condensed", "DejaVu Serif", Georgia, serif;
+}
+/* the footer is a site-wide block drawn in the Home face — keep it there */
+.p-pay .foot { font-family: "DejaVu Serif", Georgia, "Times New Roman", serif; }
 
-.pay { width: calc(var(--u) * 700); max-width: 100%; margin: calc(var(--u) * 40) auto 0; }
+.py {
+  background: var(--cream-hi);
+  color: var(--navy-ink);
+  /* design: nav underline bottom y297 -> title cap-top y395. The shared banner
+     already keeps 13.4 below its underline and the title's own half-leading
+     carries a further 16.2. */
+  padding-top: calc(var(--u) * 72);
+  padding-bottom: calc(var(--u) * 73.2);         /* tag baseline -> canvas bottom */
+}
 
-.pay__ways { margin: 0; padding: 0; list-style: none; }
+.py__in {
+  width: calc(var(--u) * 955);                   /* card row x33 -> x987 */
+  margin: 0 auto;
+}
 
-.pay__way {
+/* ---- title ---- */
+.py__title {
+  margin: 0;
+  font-size: calc(var(--u) * 72.7);              /* width-fit 392 */
+  line-height: calc(var(--u) * 88);
+  font-weight: 700;
+  text-align: center;
+}
+
+/* ---- the two centred lines under it ---- */
+.py__lede {
+  margin: calc(var(--u) * 67.4) 0 0;
+  font-size: calc(var(--u) * 28.1);              /* width-fit 696 / 661 */
+  line-height: calc(var(--u) * 49);              /* ink tops y550 -> y599 */
+  text-align: center;
+}
+
+/* ==========================================================================
+   PAYMENT OPTIONS  —  a caption with a rule running out to both margins
+   ========================================================================== */
+.py__band {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  gap: calc(var(--u) * 48);
+  margin: calc(var(--u) * 46.5) 0 0;
+  font-size: calc(var(--u) * 30.6);              /* width-fit 312 */
+  line-height: calc(var(--u) * 40);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.py__band::before,
+.py__band::after {
+  content: "";
+  flex: 1 1 0;
+  height: calc(var(--u) * 2);
+  background: var(--gold);
+}
+.py__band span { white-space: nowrap; }
+
+/* ==========================================================================
+   the four cards
+   ========================================================================== */
+.py__cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);         /* 229 each */
+  gap: calc(var(--u) * 13);
+  margin: calc(var(--u) * 28.3) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.py__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(var(--u) * 350);
+  border: calc(var(--u) * 2) solid var(--gold);
+  border-radius: calc(var(--u) * 10);
+  text-align: center;
+}
+
+.py__mark { display: block; }
+.py__mark--pp { width: calc(var(--u) * 124); height: calc(var(--u) * 126); margin-top: calc(var(--u) * 45); }
+.py__mark--zl { width: calc(var(--u) * 153); height: calc(var(--u) * 68);  margin-top: calc(var(--u) * 71); }
+.py__mark--ax { width: calc(var(--u) * 91);  height: calc(var(--u) * 57);  margin-top: calc(var(--u) * 16); }
+
+/* Visa and Mastercard share a line; the drawing sets 20 between them and hangs
+   them off a common centre, so they are centred on each other vertically. */
+.py__row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: calc(var(--u) * 20);
+  margin: calc(var(--u) * 22.4) 0 0;
 }
-.pay__way + .pay__way { margin-top: calc(var(--u) * 22); }
+.py__mark--vi { width: calc(var(--u) * 92); height: calc(var(--u) * 31); }
+.py__mark--mc { width: calc(var(--u) * 71); height: calc(var(--u) * 45); }
 
-.pay__ic {
-  flex: 0 0 auto;
-  width: calc(var(--u) * 54);
-  height: calc(var(--u) * 54);
-}
-.pay__ic svg { display: block; width: 100%; height: 100%; }
-.pay__ic .ring { fill: none; stroke: var(--gold); stroke-width: 2.2; }
-.pay__ic .solid { fill: var(--navy-ink); }
-.pay__ic .line {
-  fill: none;
-  stroke: var(--navy-ink);
-  stroke-width: 2.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.pay__ic .cut { fill: none; stroke: var(--cream-hi); stroke-width: 2.6; }
-
-.pay__h {
-  margin: calc(var(--u) * 2) 0 0;
-  font-size: calc(var(--u) * 23);
+.py__we {
+  margin: calc(var(--u) * 23.7) 0 0;
+  font-size: calc(var(--u) * 22.6);              /* width-fit 140 */
   line-height: calc(var(--u) * 30);
   font-weight: 700;
-}
-.pay__p {
-  margin: calc(var(--u) * 5) 0 0;
-  font-size: calc(var(--u) * 19.5);
-  line-height: calc(var(--u) * 29);
+  text-transform: uppercase;
 }
 
-/* the button a way to pay gets once its link exists. Written now so that
-   turning a method on later is one anchor, not a new stylesheet. */
-.pay__btn {
-  display: inline-block;
-  margin-top: calc(var(--u) * 11);
-  padding: 0 calc(var(--u) * 26);
-  height: calc(var(--u) * 42);
-  border-radius: calc(var(--u) * 21);
-  background: var(--navy-ink);
-  color: var(--cream-hi);
-  font-size: calc(var(--u) * 19);
-  line-height: calc(var(--u) * 42);
-  text-decoration: none;
+.py__txt {
+  margin: 0;
+  font-size: calc(var(--u) * 21);                /* width-fit over 13 lines */
+  line-height: calc(var(--u) * 34);
 }
-.pay__btn:hover { background: #0a2947; }
-.pay__btn:focus-visible { outline: calc(var(--u) * 2) solid var(--gold-lt); outline-offset: 2px; }
+.py__card--pp .py__txt { margin-top: calc(var(--u) * 25); }
+.py__card--zl .py__txt { margin-top: calc(var(--u) * 57); }
+.py__card--ac .py__txt { margin-top: calc(var(--u) * 15); }
+.py__card--fe .py__txt { margin-top: calc(var(--u) * 33); }
 
-/* the reassurance line under the list */
-.pay__safe {
-  margin: calc(var(--u) * 24) 0 0;
-  font-size: calc(var(--u) * 18);
-  line-height: calc(var(--u) * 27);
+/* ---- the card-with-a-percentage icon, drawn rather than fetched ---- */
+.py__mark--fe { margin-top: calc(var(--u) * 45); }
+.py__ic { display: block; width: calc(var(--u) * 128); height: calc(var(--u) * 107); }
+.py__ic .ln {
+  fill: none;
+  stroke: var(--navy-ink);
+  stroke-width: 6;
+  stroke-linecap: round;
+}
+.py__ic .bdg { fill: var(--gold); }
+.py__ic .pct { fill: var(--cream-hi); stroke: var(--cream-hi); stroke-width: 4.6; stroke-linecap: round; }
+.py__ic .pct circle { fill: none; }
+
+/* ==========================================================================
+   the reassurance box
+   ========================================================================== */
+.py__safe {
+  display: flex;
+  align-items: flex-start;
+  width: calc(var(--u) * 778);                   /* x123 -> x900 */
+  height: calc(var(--u) * 138);
+  margin: calc(var(--u) * 44) auto 0;
+  border: calc(var(--u) * 2) solid var(--gold);
+  border-radius: calc(var(--u) * 10);
+  /* the drawing hangs the padlock off the left rather than centring the pair,
+     and centres the two lines of text on x547 — not on the box. Reproduced. */
+  padding-left: calc(var(--u) * 117);
+}
+.py__lock { flex: 0 0 auto; margin-top: calc(var(--u) * 25); }
+.py__lockic { display: block; width: calc(var(--u) * 61); height: calc(var(--u) * 84); }
+.py__lockic .shk { fill: none; stroke: var(--gold); stroke-width: 9; }
+.py__lockic .bdy { fill: var(--gold); }
+.py__lockic .hol { fill: var(--cream-hi); }
+
+.py__safetxt {
+  width: calc(var(--u) * 490);
+  margin: calc(var(--u) * 26.4) 0 0;
+  font-size: calc(var(--u) * 23.3);              /* width-fit 391 / 401 */
+  line-height: calc(var(--u) * 39);              /* ink tops y1183 -> y1222 */
   text-align: center;
-  color: #4a5765;
 }
 
-/* the request form sits in the same column as the ways to pay */
-.pay .bk { width: 100%; margin-top: calc(var(--u) * 34); }
+/* ==========================================================================
+   the sign-off
+   ========================================================================== */
+.p-pay .rule--py {
+  display: block;
+  position: relative;
+  width: calc(var(--u) * 778);
+  height: calc(var(--u) * 2);
+  margin: calc(var(--u) * 63.5) auto 0;
+  background: var(--gold);
+}
+.p-pay .rule--py .gem {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: calc(var(--u) * 16);
+  height: calc(var(--u) * 16);
+  background: var(--gold);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.py__thanks {
+  margin: calc(var(--u) * 33.6) 0 0;
+  font-size: calc(var(--u) * 23.8);              /* width-fit 349 */
+  line-height: calc(var(--u) * 36);
+  font-weight: 700;
+  font-style: italic;
+  text-align: center;
+}
+
+.py__tag {
+  margin: calc(var(--u) * 11.7) 0 0;
+  font-size: calc(var(--u) * 23);                /* width-fit 531 */
+  line-height: calc(var(--u) * 34);
+  font-style: italic;
+  text-align: center;
+  color: var(--gold);
+}
 
 /* ==========================================================================
    Pay Online: tablet / mobile (< 1100px)
-   The Contact mobile block already resets --u and restyles card, fields and
-   button; only what is added above needs answering.
    ========================================================================== */
 @media (max-width: 1099.98px) {
-  .pay { width: auto; margin-top: 1.3rem; }
+  .p-pay { --u: 1px; }
 
-  .pay__way { gap: 0.85rem; }
-  .pay__way + .pay__way { margin-top: 1.1rem; }
+  .py { padding: 1.6rem 1.1rem 2.4rem; }
+  .py__in { width: auto; max-width: 42rem; }
 
-  .pay__ic { width: clamp(40px, 11vw, 52px); height: clamp(40px, 11vw, 52px); }
+  .py__title { font-size: clamp(30px, 7.6vw, 46px); line-height: 1.15; }
+  .py__lede {
+    margin-top: 1.1rem;
+    font-size: clamp(16px, 3.7vw, 21px);
+    line-height: 1.45;
+  }
+  .py__lede br { display: none; }
 
-  .pay__h { font-size: clamp(17px, 4vw, 21px); line-height: 1.3; }
-  .pay__p { margin-top: 0.25rem; font-size: clamp(15px, 3.4vw, 18px); line-height: 1.45; }
+  .py__band {
+    margin-top: 1.5rem;
+    gap: 0.9rem;
+    font-size: clamp(16px, 3.8vw, 22px);
+    line-height: 1.3;
+  }
+  .py__band::before,
+  .py__band::after { height: 2px; }
 
-  .pay__btn {
-    margin-top: 0.6rem;
-    height: 2.7rem;
-    line-height: 2.7rem;
-    padding: 0 1.2rem;
-    border-radius: 1.35rem;
-    font-size: 1rem;
+  .py__cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.7rem;
+    margin-top: 1.1rem;
+  }
+  .py__card {
+    height: auto;
+    padding-bottom: 1.1rem;
+    border-width: 2px;
+    border-radius: 9px;
   }
 
-  .pay__safe { margin-top: 1.1rem; font-size: 0.88rem; line-height: 1.45; }
+  /* the marks keep their drawn proportions; only their size follows the column */
+  .py__mark--pp { width: clamp(64px, 17vw, 100px); height: auto; margin-top: 1.1rem; }
+  .py__mark--zl { width: clamp(84px, 22vw, 124px); height: auto; margin-top: 1.5rem; }
+  .py__mark--ax { width: clamp(56px, 15vw, 78px);  height: auto; margin-top: 0.6rem; }
+  .py__mark--vi { width: clamp(56px, 15vw, 78px);  height: auto; }
+  .py__mark--mc { width: clamp(44px, 12vw, 62px);  height: auto; }
+  .py__row { gap: 0.6rem; margin-top: 0.7rem; }
 
-  .pay .bk { margin-top: 1.4rem; }
+  .py__we { margin-top: 0.9rem; font-size: clamp(15px, 3.6vw, 19px); line-height: 1.3; }
+
+  .py__mark--fe { margin-top: 1.1rem; }
+  .py__ic { width: clamp(74px, 20vw, 110px); height: auto; }
+
+  .py__txt { font-size: clamp(14px, 3.3vw, 18px); line-height: 1.45; }
+  .py__card--pp .py__txt,
+  .py__card--zl .py__txt,
+  .py__card--ac .py__txt,
+  .py__card--fe .py__txt { margin-top: 0.85rem; }
+
+  .py__safe {
+    width: auto;
+    height: auto;
+    margin-top: 1.4rem;
+    padding: 1rem 1.1rem;
+    border-width: 2px;
+    border-radius: 9px;
+    align-items: center;
+    justify-content: center;
+    gap: 0.9rem;
+  }
+  .py__lock { margin-top: 0; }
+  .py__lockic { width: clamp(34px, 9vw, 48px); height: auto; }
+  .py__safetxt { width: auto; margin-top: 0; font-size: clamp(15px, 3.5vw, 19px); line-height: 1.45; }
+  .py__safetxt br { display: none; }
+
+  .p-pay .rule--py { width: min(90%, 30rem); height: 2px; margin-top: 1.6rem; }
+  .p-pay .rule--py .gem { width: 13px; height: 13px; }
+
+  .py__thanks { margin-top: 1.1rem; font-size: clamp(17px, 4vw, 22px); line-height: 1.35; }
+  .py__tag { margin-top: 0.45rem; font-size: clamp(15px, 3.6vw, 20px); line-height: 1.4; }
 }
